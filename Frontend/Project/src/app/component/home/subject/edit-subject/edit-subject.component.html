@@ -1,0 +1,37 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Edit Subject</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px;">
+    <mat-card-content>
+      <form [formGroup]="formEditSub" (ngSubmit)="dialogEditSub()">
+        <mat-grid-list cols="4" rowHeight="100px">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="enter name" autocomplete="off" formControlName="name">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Price</mat-label>
+              <input matInput placeholder="enter price" formControlName="price"
+                autocomplete="off"  type="number">
+            </mat-form-field>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="4" [rowspan]="2">
+              <button mat-raised-button color="primary" type="submit" style="margin-right: 20px;"
+              [disabled]="formEditSub.invalid">Update</button>
+              <button mat-raised-button color="warn" type="reset">cancel</button>
+          </mat-grid-tile>
+
+
+        </mat-grid-list>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,98 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Receipt</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px;">
+    <mat-card-content>
+      <form [formGroup]="receiptForm" (ngSubmit)="dialogCreateStu()">
+      <mat-grid-list cols="2" rowHeight="100px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>รหัสวิชา</mat-label>
+            <input type="text" matInput placeholder="กรอกรหัสวิชา"
+              formControlName="cou_ID"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>ชื่อวิชา</mat-label>
+            <input type="text" matInput placeholder="กรอกชื่อวิชา"
+              formControlName="sub_Name"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>รหัสนักเรียน</mat-label>
+            <input type="text" matInput placeholder="กรอกรหัสนักเรียน"
+              formControlName="stu_ID"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>ชื่อนักเรียน</mat-label>
+            <input type="text" matInput placeholder="กรอกชื่อนักเรียน"
+              formControlName="stu_Name"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>จำนวนเงินที่ชำระ</mat-label>
+            <input type="text" matInput placeholder="กรอกจำนวนเงิน"
+              formControlName="amount_pay"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="broad">
+            <mat-label>เวลาชำระเงิน</mat-label>
+            <input type="time" matInput placeholder="กรอกเวลาชำระเงิน"
+              formControlName="pay_time"
+              autocomplete="off" readonly>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field appearance="fill" class="broad">
+            <mat-label>วันที่ชำระเงิน</mat-label>
+            <input matInput [matDatepicker]="pay_date"
+              formControlName="pay_date" readonly>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pay_date" disabled="true"></mat-datepicker-toggle>
+            <mat-datepicker #pay_date></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>ยืนยันการออกใบเสร็จ</mat-label>
+          <mat-radio-group aria-label="Select an option" formControlName="confirmReceipt">
+            <mat-radio-button value="confirmReceipt">ออกใบเสร็จชำระเงิน</mat-radio-button>
+            <mat-radio-button value="cancelReceipt">หลักฐานชำระเงินไม่ครบถ้วน</mat-radio-button>
+          </mat-radio-group>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="6" class="image-container">
+          <img [src]="src" alt="Zoomable Image" (click)="this.Download()">
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button mat-raised-button color="primary" type="submit"
+            style="margin-right: 20px;" [disabled]="receiptForm.invalid">confirm</button>
+          <button mat-raised-button color="warn" type="reset">cancel</button>
+        </mat-grid-tile>
+
+
+      </mat-grid-list>
+    </form>
+    </mat-card-content>
+  </mat-card>
+</div>

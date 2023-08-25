@@ -1,0 +1,83 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Enroll</span>
+  </mat-toolbar>
+
+  <mat-card style="margin-top: 10px;">
+    <mat-card-content>
+      <form [formGroup]="paySlipForm" (ngSubmit)="dialogPayBill()">
+
+        <mat-grid-list cols="4" rowHeight="100px">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>รหัสคอร์ส</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา" formControlName="cou_ID"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>รหัสนักเรียน</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา" formControlName="stu_ID"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>ชื่อคอร์ส</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา" formControlName="sub_Name"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>ชื่อนักเรียน</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา" formControlName="stu_Name"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>เวลาชำระเงิน</mat-label>
+              <input type="time" matInput placeholder="กรอกเวลาชำระเงิน"
+                formControlName="pay_time"
+                autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>วันที่ชำระเงิน</mat-label>
+              <input matInput [matDatepicker]="pay_date"
+                formControlName="pay_date">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="pay_date"></mat-datepicker-toggle>
+              <mat-datepicker #pay_date></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="4" [rowspan]="1">
+            <p><input type="file" (change)="onFileSelected($event)"></p>
+            <!-- <button type="button" (click)="onUpload()">Upload</button> -->
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="4" [rowspan]="2">
+            <button mat-raised-button color="primary" type="submit"
+              style="margin-right: 20px;" [disabled]="paySlipForm.invalid">confirm</button>
+            <button mat-raised-button color="warn" type="reset">cancel</button>
+          </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

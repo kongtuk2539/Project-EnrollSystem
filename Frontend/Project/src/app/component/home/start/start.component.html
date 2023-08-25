@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Home</span>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" [routerLink]="['/home/course',user.id]"
+    *ngIf="user.role == 'Teacher'">CourseWithTeacher</button>
+  </mat-toolbar>
+  <div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;"
+    >
+  </div>
+
+</div>

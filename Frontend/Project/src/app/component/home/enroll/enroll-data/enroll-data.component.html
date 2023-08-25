@@ -1,0 +1,139 @@
+<div class="container">
+  <mat-toolbar>
+    <span>รายชื่อนักเรียน</span>
+    <div class="example-spacer"></div>
+    <div> {{SubName}} <br> อาจารย์ผู้สอน : {{TecName}}</div>
+  </mat-toolbar>
+
+  <mat-form-field>
+    <mat-label>ID Search</mat-label>
+    <input matInput (keyup)="applyFilterID($event)" placeholder="ID Employee"
+      type="number" #input autocomplete="off">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="status"
+      (selectionChange)="applyFilterStatus(selectedValue)">
+      <mat-option *ngFor="let sta of status" [value]="sta.value">
+        {{sta.viewvalue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>{{selectedValue}}</p>
+
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" matSort
+      (matSortChange)="announceSortChange($event)">
+      <ng-container matColumnDef="stu_ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header
+          sortActionDescription="sortByid"> รหัสนักเรียน </th>
+        <td mat-cell *matCellDef="let row"> {{row.stu_ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="stu_Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ชื่อนักเรียน
+        </th>
+        <td mat-cell *matCellDef="let row"> {{row.stu_Name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sta_pay">
+        <th mat-header-cell *matHeaderCellDef> สถานะจ่ายเงิน </th>
+        <td mat-cell *matCellDef="let row"> {{row.sta_pay}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_learn">
+        <th mat-header-cell *matHeaderCellDef> คะแนนเข้าเรียน </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_learn}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_1">
+        <th mat-header-cell *matHeaderCellDef> คะแนนเก็บ1 </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_2">
+        <th mat-header-cell *matHeaderCellDef> คะแนนเก็บ2 </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_3">
+        <th mat-header-cell *matHeaderCellDef> คะแนนเก็บ3 </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_final">
+        <th mat-header-cell *matHeaderCellDef> คะแนนสอบ </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_final}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score_total">
+        <th mat-header-cell *matHeaderCellDef> คะแนนรวม </th>
+        <td mat-cell *matCellDef="let row"> {{row.score_total}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ผลการเรียน </th>
+        <td mat-cell *matCellDef="let row"> {{row.result}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let row;" style="text-align: center;">
+
+          <button mat-button [matMenuTriggerFor]="menu" [disabled]="row.sta_pay == 'ยกเลิกการลงทะเบียน'">Action</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/home/enroll-information',row.cou_ID, row.stu_ID]"
+            *ngIf="row.sta_pay != 'ยกเลิกการลงทะเบียน'">ดูรายละเอียด/ส่งหลักฐานชำระเงิน</button>
+            <button mat-menu-item [routerLink]="['/home/enroll-information',row.cou_ID, row.stu_ID]"
+            *ngIf="row.sta_pay != 'ยกเลิกการลงทะเบียน'">พิมพ์ใบชำระเงิน/หลักฐานชำระเงิน</button>
+            <button mat-menu-item [routerLink]="['/home/receipt-check',row.cou_ID, row.stu_ID]"
+            *ngIf="row.sta_pay == 'รอตรวจสอบ'">ตรวจสอบหลักฐานชำระเงิน</button>
+            <button mat-menu-item [routerLink]="['/home/add-score',row.cou_ID, row.stu_ID]"
+            *ngIf="user.role == 'Employee' && row.sta_pay == 'ชำระเงินเรียบร้อย'">กรอกคะแนน</button>
+            <button mat-menu-item (click)="printCertificate(row.cou_ID, row.stu_ID)"
+            *ngIf="row.result == 'ผ่าน'">พิมพ์Certificate</button>
+            <button mat-menu-item (click)="dialogCancelEnroll(row.cou_ID, row.stu_ID)"
+            *ngIf="user.role == 'Employee'">ยกเลิกการลงทะเบียน</button>
+          </mat-menu>
+
+          <!-- <a class="pointer" style="color: #1878b8;" matTooltip="see more"
+            [routerLink]="['/home/enroll-information',row.cou_ID, row.stu_ID]">
+            <mat-icon>search</mat-icon>
+          </a>
+
+          <a class="pointer" style="color: #04e72a;" matTooltip="addScore"
+            [routerLink]="['/home/add-score',row.cou_ID, row.stu_ID]">
+            <mat-icon>school</mat-icon>
+          </a>
+
+          <a class="pointer" style="color: #004ffa;" matTooltip="addScore"
+            (click)="Checkname(row.cou_ID, row.stu_ID)">
+            <mat-icon>check</mat-icon>
+          </a>
+
+          <a class="pointer" style="color: #b004ff;" matTooltip="Receipt"
+            [routerLink]="['/home/receipt-check',row.cou_ID, row.stu_ID]"
+            *ngIf="row.sta_pay == 'รอตรวจสอบ'">
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a class="pointer" style="color: #ff0505;" matTooltip="delete">
+            <mat-icon>delete</mat-icon>
+          </a> -->
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</div>

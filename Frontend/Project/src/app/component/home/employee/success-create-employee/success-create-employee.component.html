@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Employee</span>
+    <div class="example-spacer"></div>
+  </mat-toolbar>
+
+  <div class="container">
+    <div class="success-mes" *ngIf="dataEmployee">
+      <h2>สมัครสมาชิกสำเร็จ</h2>
+    </div>
+
+    <div class="ul-show">
+      <ul *ngIf="dataEmployee" class="ul-label">
+        <li><p><strong>ID </strong></p></li>
+        <li><p><strong>Name </strong></p></li>
+        <li><p><strong>Address </strong></p></li>
+        <li><p><strong>E-Mail </strong></p></li>
+        <li><p><strong>Tel </strong></p></li>
+      </ul>
+
+      <ul *ngIf="dataEmployee" class="ul-date">
+        <li><p>{{dataEmployee.emp_ID}}</p></li>
+        <li><p>{{dataEmployee.emp_Name}}</p></li>
+        <li><p>{{dataEmployee.emp_Add}}</p></li>
+        <li><p>{{dataEmployee.emp_Mail}}</p></li>
+        <li><p>{{dataEmployee.emp_Tel}}</p></li>
+      </ul>
+    </div>
+
+    <div class="message" *ngIf="dataEmployee">
+      <p><strong>**โปรดจำ ID ไว้ให้ดี เนื่องจากใช้เป็น Username ในการ Login</strong></p>
+      <p><strong>หากลืมรหัสผ่านโปรดแจ้ง admin เท่านั้น</strong></p>
+    </div>
+
+    <div *ngIf="dataEmployee" class="btn">
+      <button mat-raised-button
+        color="primary"
+        routerLink="/home">Back Home</button>
+    </div>
+
+    <div *ngIf="!dataEmployee" class="btn">
+      <h3>ไม่พบข้อมูล</h3>
+      <button mat-raised-button
+        color="primary"
+        routerLink="/home">Back Home</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Home",
+    "direct": "/home",
+    "role": ["Student", "Employee", "Teacher"]
+  },
+  {
+    "name": "Subject",
+    "direct": "/home/subject",
+    "role": ["Employee"]
+  },
+  {
+    "name": "Employee",
+    "direct": "/home/employee",
+    "role": ["Employee"]
+  },
+  {
+    "name": "Student",
+    "direct": "/home/student",
+    "role": ["Employee"]
+  },
+  {
+    "name": "Teacher",
+    "direct": "/home/teacher",
+    "role": ["Employee"]
+  },
+  {
+    "name": "Course",
+    "direct": "/home/course",
+    "role": ["Student", "Employee", "Teacher"]
+  },
+  {
+    "name": "Reportes",
+    "direct": "/home/reportes",
+    "role": ["Employee"]
+  }
+]

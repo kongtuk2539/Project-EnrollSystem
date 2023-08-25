@@ -1,0 +1,88 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Teacher</span>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" routerLink="/home/create-teacher">Create Teacher</button>
+  </mat-toolbar>
+
+  <mat-form-field>
+    <mat-label>ID Search</mat-label>
+    <input matInput (keyup)="applyFilterID($event)" placeholder="ID Employee"
+      type="number" #input autocomplete="off">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name Search</mat-label>
+    <input matInput (keyup)="applyFilterName($event)" placeholder="Name Employee" #input autocomplete="off">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+      <ng-container matColumnDef="tec_ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="sortByid"> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_ID}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="tec_Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_Name}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="tec_Sex">
+        <th mat-header-cell *matHeaderCellDef> Sex </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_Sex}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="tec_Add">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_Add}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tec_Mail">
+        <th mat-header-cell *matHeaderCellDef> E-Mail </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_Mail}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tec_Tel">
+        <th mat-header-cell *matHeaderCellDef> Tel </th>
+        <td mat-cell *matCellDef="let row"> {{row.tec_Tel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sta_Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let row"> {{row.sta_Name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let row;" style="text-align: center;">
+          <!-- <a class="pointer" style="color: #1878b8;" matTooltip="see more">
+            <mat-icon>search</mat-icon>
+          </a> -->
+          <a class="pointer" style="color: #b004ff;" matTooltip="edit" [routerLink]="['/home/edit-teacher',row.tec_ID]">
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a class="pointer" style="color: #ff0505;" matTooltip="delete" (click)="dialogDeleteTec(row.tec_ID, row.tec_Name, row.sta_Name)">
+            <mat-icon>delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+    </table>
+
+    <mat-paginator [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</div>
+
+
+

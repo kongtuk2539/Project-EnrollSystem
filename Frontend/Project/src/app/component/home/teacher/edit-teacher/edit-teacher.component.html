@@ -1,0 +1,129 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Edit Teacher</span>
+  </mat-toolbar>
+  <mat-card style="margin-top: 10px;">
+    <mat-card-content>
+      <form [formGroup]="formEditTec" (ngSubmit)="dialogEditTec()">
+        <mat-grid-list cols="4" rowHeight="130px">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="enter your name" autocomplete="off"
+                formControlName="name">
+              <mat-error>
+                Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="7"
+            [style.background]="'#99FF66'">
+            <img src="./assets/img/user.png" width="250" height="250">
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="enter your password"
+                formControlName="password"
+                autocomplete="off" [type]="showPassword ? 'text' : 'password'">
+              <a mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </a>
+              <mat-error *ngIf="formEditTec.hasError('required', 'password')">
+                Password is <strong>required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="formEditTec.hasError('containsSpace', 'password')">Password
+                cannot contain spaces</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>confirm-Password</mat-label>
+              <input matInput placeholder="enter your password"
+                autocomplete="off" formControlName="confirm_password"
+                [type]="showPassword ? 'text' : 'password'">
+              <a mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </a>
+              <mat-error
+                *ngIf="formEditTec.hasError('passwordsMismatch', 'confirm_password')">
+                Passwords do not
+                match
+              </mat-error>
+              <mat-error
+                *ngIf="formEditTec.hasError('required', 'confirm_password')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-radio-group aria-label="Sex" formControlName="sex">
+              <mat-label style="margin-left: 4em;">Sex</mat-label>
+              <mat-radio-button value="male">male</mat-radio-button>
+              <mat-radio-button value="female">female</mat-radio-button>
+              <mat-radio-button value="other">other</mat-radio-button>
+            </mat-radio-group>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Address</mat-label>
+              <textarea matInput placeholder="enter your address"
+                formControlName="address"
+                autocomplete="off">{{formEditTec.value.address}}</textarea>
+              <mat-error>
+                Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl"
+                placeholder="enter your e-mail" autocomplete="off">
+              <mat-error *ngIf="emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>Tel</mat-label>
+              <input matInput placeholder="enter your tel" autocomplete="off"
+                formControlName="tel">
+              <mat-error *ngIf="formEditTec.hasError('required', 'tel')">Tel is
+                <strong>required</strong></mat-error>
+              <mat-error *ngIf="formEditTec.hasError('pattern', 'tel')">Please
+                enter
+                a
+                valid number.</mat-error>
+              <mat-error
+                *ngIf="formEditTec.hasError('maxLengthExceeded', 'tel')">Number
+                exceeds the maximum length of 10 digits.</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <button mat-raised-button color="primary" type="submit"
+              style="margin-right: 20px;"
+              [disabled]="formEditTec.invalid || emailFormControl.invalid">Update</button>
+            <button mat-raised-button color="warn" type="reset">cancel</button>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

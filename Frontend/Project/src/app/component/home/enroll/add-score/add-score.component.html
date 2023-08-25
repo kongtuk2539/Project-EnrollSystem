@@ -1,0 +1,144 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Add Score</span>
+  </mat-toolbar>
+
+  <mat-card style="margin-top: 10px;">
+    <mat-card-content>
+      <form [formGroup]="scoreForm" (submit)="dialogAddScore()">
+
+        <mat-grid-list cols="4" rowHeight="100px">
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>รหัสคอร์ส</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา"
+                formControlName="cou_ID"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>รหัสนักเรียน</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา"
+                formControlName="stu_ID"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>ชื่อคอร์ส</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา"
+                formControlName="sub_Name"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>ชื่อนักเรียน</mat-label>
+              <input type="text" matInput placeholder="กรอกชื่อวิชา"
+                formControlName="stu_Name"
+                autocomplete="off" readonly>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>คะแนนเก็บ 1</mat-label>
+              <input type="number" matInput placeholder="กรอกคะแนนครั้งที่ 1"
+                formControlName="score_1"
+                autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>คะแนนเก็บ 2</mat-label>
+              <input type="number" matInput placeholder="กรอกคะแนนครั้งที่ 2"
+                formControlName="score_2"
+                autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>คะแนนเก็บ 3</mat-label>
+              <input type="number" matInput placeholder="กรอกคะแนนครั้งที่ 3"
+                formControlName="score_3"
+                autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field class="broad">
+              <mat-label>คะแนนสอบ</mat-label>
+              <input type="number" matInput placeholder="กรอกคะแนนสอบ"
+                formControlName="score_final"
+                autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>เข้าเรียนครั้งที่ 1</mat-label>
+              <input matInput [matDatepicker]="date_class1"
+                formControlName="date_class1">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="date_class1"></mat-datepicker-toggle>
+              <mat-datepicker #date_class1></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>เข้าเรียนครั้งที่ 2</mat-label>
+              <input matInput [matDatepicker]="date_class2"
+                formControlName="date_class2">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="date_class2"></mat-datepicker-toggle>
+              <mat-datepicker #date_class2></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>เข้าเรียนครั้งที่ 3</mat-label>
+              <input matInput [matDatepicker]="date_class3"
+                formControlName="date_class3">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="date_class3"></mat-datepicker-toggle>
+              <mat-datepicker #date_class3></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>เข้าสอบ</mat-label>
+              <input matInput [matDatepicker]="date_class4"
+                formControlName="date_class4">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="date_class4"></mat-datepicker-toggle>
+              <mat-datepicker #date_class4></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="4" [rowspan]="2">
+            <button mat-raised-button color="primary" type="submit"
+              style="margin-right: 20px;" [disabled]="scoreForm.invalid">confirm</button>
+            <button mat-raised-button color="warn" type="reset">cancel</button>
+          </mat-grid-tile>
+
+
+
+
+        </mat-grid-list>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

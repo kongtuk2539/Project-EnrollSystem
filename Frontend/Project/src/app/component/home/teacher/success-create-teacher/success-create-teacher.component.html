@@ -1,0 +1,50 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Teacher</span>
+    <div class="example-spacer"></div>
+  </mat-toolbar>
+
+  <div class="container">
+    <div class="success-mes" *ngIf="dataTeacher">
+      <h2>สมัครสมาชิกสำเร็จ</h2>
+    </div>
+
+    <div class="ul-show">
+      <ul *ngIf="dataTeacher" class="ul-label">
+        <li><p><strong>ID </strong></p></li>
+        <li><p><strong>Name </strong></p></li>
+        <li><p><strong>Address </strong></p></li>
+        <li><p><strong>E-Mail </strong></p></li>
+        <li><p><strong>Tel </strong></p></li>
+      </ul>
+
+      <ul *ngIf="dataTeacher" class="ul-date">
+        <li><p>{{dataTeacher.tec_ID}}</p></li>
+        <li><p>{{dataTeacher.tec_Name}}</p></li>
+        <li><p>{{dataTeacher.tec_Add}}</p></li>
+        <li><p>{{dataTeacher.tec_Mail}}</p></li>
+        <li><p>{{dataTeacher.tec_Tel}}</p></li>
+      </ul>
+    </div>
+
+    <div class="message" *ngIf="dataTeacher">
+      <p><strong>**โปรดจำ ID ไว้ให้ดี เนื่องจากใช้เป็น Username ในการ Login</strong></p>
+      <p><strong>หากลืมรหัสผ่านโปรดแจ้ง admin เท่านั้น</strong></p>
+    </div>
+
+    <div *ngIf="dataTeacher" class="btn">
+      <button mat-raised-button
+        color="primary"
+        routerLink="/home">Back Home</button>
+    </div>
+
+    <div *ngIf="!dataTeacher" class="btn">
+      <h3>ไม่พบข้อมูล</h3>
+      <button mat-raised-button
+        color="primary"
+        routerLink="/home">Back Home</button>
+    </div>
+  </div>
+
+</div>
+
