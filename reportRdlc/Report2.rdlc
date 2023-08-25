@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value> ใบเสร็จชำระเงิน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>24pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value> โรงเรียนสอนดนตรี</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>24pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.36941cm</Top>
+        <Left>5.56965cm</Left>
+        <Height>2.51354cm</Height>
+        <Width>4.80188cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="Image1">
+        <Source>Embedded</Source>
+        <Value>pngtreemusicalnotesstaffcoloredclipartpngimage_6108111</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.36941cm</Top>
+        <Left>0.48462cm</Left>
+        <Height>2.51354cm</Height>
+        <Width>4.63014cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>เลขที่ 123</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>16pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>แขวงวัดอรุณ เขตบางกอกใหญ่</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>16pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>กรุงเทพมหานคร รหัสไปรษณีย์ : 10600</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>16pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>โทร: 02-123-1234 , 081-123-1234 </Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>16pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>0.36941cm</Top>
+        <Left>13.93912cm</Left>
+        <Height>3.23673cm</Height>
+        <Width>6.31002cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox40">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ออกเมื่อวันที่  : </Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>3.93674cm</Top>
+        <Left>0.48464cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.28423cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox41">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!receipt_date.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>D</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>3.93674cm</Top>
+        <Left>3.29262cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>4.14042cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line2">
+        <Top>5.37445cm</Top>
+        <Left>0.48464cm</Left>
+        <Height>0cm</Height>
+        <Width>19.7645cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox42">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>รหัสใบเสร็จ  : </Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>3.93674cm</Top>
+        <Left>13.93912cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.28423cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox43">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!receipt_number.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>D</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>3.93674cm</Top>
+        <Left>15.25179cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>4.99735cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox24">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>รหัสนักเรียน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>5.78882cm</Top>
+        <Left>0.48462cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.02917cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox25">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ชื่อนักเรียน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>5.78882cm</Top>
+        <Left>7.2873cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.02917cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox38">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!stu_ID.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>5.78882cm</Top>
+        <Left>3.89042cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>2.66363cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox39">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!stu_Name.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>5.78882cm</Top>
+        <Left>10.69311cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>7.43448cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox45">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>รายการลงทะเบียน และรายละเอียดชำระเงิน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>7.23418cm</Top>
+        <Left>0.48458cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>8.21256cm</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix4">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>4.93532cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>4.93532cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>4.93532cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>4.95855cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>1.06302cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox47">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>รหัสคอร์สเรียน</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox47</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox50">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ชื่อคอร์สเรียน</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox50</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox52">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>เวลาชำระเงิน</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox52</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox54">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>วันที่ชำระเงิน</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox54</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>1.06302cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="cou_ID1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!cou_ID.Value</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>cou_ID1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="sub_Name1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!sub_Name.Value</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>sub_Name1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="pay_time">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!pay_time.Value</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>pay_time</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="pay_date">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!pay_date.Value</Value>
+                              <Style>
+                                <FontFamily>Angsana New</FontFamily>
+                                <FontSize>18pt</FontSize>
+                                <Format>D</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>pay_date</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details1" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>DataReceipt</DataSetName>
+        <Top>8.60846cm</Top>
+        <Left>0.44583cm</Left>
+        <Height>2.12604cm</Height>
+        <Width>19.76451cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox44">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>เป็นจำนวนเงิน  : </Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>10.91089cm</Top>
+        <Left>13.93912cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.28423cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox49">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!amount_pay.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>'฿'0.00;'฿'0.00-</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>10.91089cm</Top>
+        <Left>16.10872cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>4.14042cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>th-TH</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Line Name="Line3">
+        <Top>12.74209cm</Top>
+        <Left>0.44583cm</Left>
+        <Height>0cm</Height>
+        <Width>19.7645cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ชื่อผู้ชำระเงิน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>12.8832cm</Top>
+        <Left>2.25882cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.58442cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox51">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!stu_Name.Value</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>13.8007cm</Top>
+        <Left>0.44577cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>6.94846cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox27">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ชื่อผู้รับเงิน</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>12.8832cm</Top>
+        <Left>14.5889cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.58442cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox53">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>บริษัทสอนดนตรี</Value>
+                <Style>
+                  <FontFamily>Angsana New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>13.8007cm</Top>
+        <Left>12.77585cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>7.43448cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>16.18167cm</Height>
+    <Style />
+  </Body>
+  <Width>20.97844cm</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>1cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSet2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>8d72da55-5326-492d-a1ac-ede69fc580da</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataReceipt">
+      <Query>
+        <DataSourceName>DataSet2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="stu_ID">
+          <DataField>stu_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="stu_Name">
+          <DataField>stu_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="receipt_number">
+          <DataField>receipt_number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="receipt_date">
+          <DataField>receipt_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="cou_ID">
+          <DataField>cou_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="sub_Name">
+          <DataField>sub_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pay_time">
+          <DataField>pay_time</DataField>
+          <rd:TypeName>System.TimeSpan</rd:TypeName>
+        </Field>
+        <Field Name="pay_date">
+          <DataField>pay_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="amount_pay">
+          <DataField>amount_pay</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DataSet2</rd:DataSetName>
+        <rd:SchemaPath>D:\Project_App_Music\Backend\Project\Project\reportRdlc\DataSet2.xsd</rd:SchemaPath>
+        <rd:TableName>DataReceipt</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="pngtreemusicalnotesstaffcoloredclipartpngimage_6108111">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>02804f0a-fe30-4148-b125-bedcac807375</rd:ReportID>
+</Report>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet3" targetNamespace="http://tempuri.org/DataSet3.xsd" xmlns:mstns="http://tempuri.org/DataSet3.xsd" xmlns="http://tempuri.org/DataSet3.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet3" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet3">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableCer" msprop:Generator_RowClassName="DataTableCerRow" msprop:Generator_RowEvHandlerName="DataTableCerRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableCerRowDeleted" msprop:Generator_RowDeletingName="DataTableCerRowDeleting" msprop:Generator_RowEvArgName="DataTableCerRowChangeEvent" msprop:Generator_TablePropName="DataTableCer" msprop:Generator_RowChangedName="DataTableCerRowChanged" msprop:Generator_UserTableName="DataTableCer" msprop:Generator_RowChangingName="DataTableCerRowChanging" msprop:Generator_TableClassName="DataTableCerDataTable" msprop:Generator_TableVarName="tableDataTableCer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="stu_Name" msprop:Generator_UserColumnName="stu_Name" msprop:Generator_ColumnPropNameInTable="stu_NameColumn" msprop:Generator_ColumnPropNameInRow="stu_Name" msprop:Generator_ColumnVarNameInTable="columnstu_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_Name" msprop:Generator_UserColumnName="sub_Name" msprop:Generator_ColumnPropNameInTable="sub_NameColumn" msprop:Generator_ColumnPropNameInRow="sub_Name" msprop:Generator_ColumnVarNameInTable="columnsub_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="cer_date" msprop:Generator_UserColumnName="cer_date" msprop:Generator_ColumnPropNameInTable="cer_dateColumn" msprop:Generator_ColumnPropNameInRow="cer_date" msprop:Generator_ColumnVarNameInTable="columncer_date" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

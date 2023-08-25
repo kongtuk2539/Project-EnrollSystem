@@ -1,0 +1,7 @@
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.csproj.AssemblyReference.cache
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.Form1.resources
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.csproj.GenerateResource.cache
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.AssemblyInfo.cs
+D:\restoreProject\zip\Project\WinFormsApp1\obj\Debug\net5.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
