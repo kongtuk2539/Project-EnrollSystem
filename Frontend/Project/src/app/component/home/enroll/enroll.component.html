@@ -3,72 +3,110 @@
     <span>Enroll</span>
   </mat-toolbar>
 
-  <mat-card style="margin-top: 10px;">
+  <mat-card style="margin-top: 10px">
     <mat-card-content>
       <form [formGroup]="formEnroll" (ngSubmit)="dialogEnroll()">
-
         <mat-grid-list cols="4" rowHeight="100px">
-
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>รหัสวิชา</mat-label>
-              <input type="text" matInput placeholder="กรอกรหัสวิชา" formControlName="cou_ID"
-                autocomplete="off" readonly>
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกรหัสวิชา"
+                formControlName="cou_ID"
+                autocomplete="off"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>ชื่อวิชา</mat-label>
-              <input type="text" matInput placeholder="กรอกชื่อวิชา" formControlName="sub_Name"
-                autocomplete="off" readonly>
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกชื่อวิชา"
+                formControlName="sub_Name"
+                autocomplete="off"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>ชื่อผู้สอน</mat-label>
-              <input type="text" matInput placeholder="กรอกชื่อผู้สอน" formControlName="tec_Name"
-                autocomplete="off" readonly>
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกชื่อผู้สอน"
+                formControlName="tec_Name"
+                autocomplete="off"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>จำนวนเงินที่ต้องชำระ</mat-label>
-              <input type="text" matInput placeholder="กรอกจำนวนเงิน" formControlName="amount_pay"
-                autocomplete="off" readonly>
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกจำนวนเงิน"
+                formControlName="amount_pay"
+                autocomplete="off"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>รหัสนักเรียน</mat-label>
-              <input type="text" matInput placeholder="กรอกรหัสนักเรียน" formControlName="stu_ID"
-              #inputStuID (keyup)="onKeyUp($event)" autocomplete="off">
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกรหัสนักเรียน"
+                formControlName="stu_ID"
+                #inputStuID
+                (keyup)="onKeyUp($event)"
+                autocomplete="off"
+                [readonly]="stuID"
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>ชื่อนักเรียน</mat-label>
-              <input type="text" matInput placeholder="กรอกชื่อนักเรียน" formControlName="stu_Name"
-                autocomplete="off" readonly>
+              <input
+                type="text"
+                matInput
+                placeholder="กรอกชื่อนักเรียน"
+                formControlName="stu_Name"
+                autocomplete="off"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
-
           <mat-grid-tile [colspan]="4" [rowspan]="2">
-            <button mat-raised-button color="primary" type="submit"
-              style="margin-right: 20px;" [disabled]="formEnroll.invalid" >confirm</button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              style="margin-right: 20px"
+              [disabled]="formEnroll.invalid"
+            >
+              confirm
+            </button>
             <button mat-raised-button color="warn" type="reset">cancel</button>
           </mat-grid-tile>
-
-
         </mat-grid-list>
-
       </form>
     </mat-card-content>
   </mat-card>
-
 </div>

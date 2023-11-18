@@ -11,6 +11,8 @@ import { student } from 'src/app/interfaces/student/student';
 import { subject } from 'src/app/interfaces/subject/subject';
 import { EnrollService } from 'src/app/services/enroll.service';
 import { ConfirmDialogEnrollComponent } from './confirm-dialog-enroll/confirm-dialog-enroll.component';
+import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
+import { AuthService } from '../../authen/auth.service';
 
 @Component({
   selector: 'app-enroll',
@@ -24,94 +26,122 @@ export class EnrollComponent implements OnInit {
   dataStu: student[] = [];
   dataSource: MatTableDataSource<student> = new MatTableDataSource<student>();
   formEnroll!: FormGroup
+  stuID: any = this._router.snapshot.paramMap.get('stu_ID')!
   get_couID: any
+  user!: userModel
 
 
-constructor(private enrollSer: EnrollService, private fb: FormBuilder, private router: ActivatedRoute,
-  private _snackBar: MatSnackBar, private routerLink: Router, public dialog: MatDialog) {
-  this.formEnroll = this.fb.group({
-    cou_ID: [null, Validators.required],
-    sub_Name: [null, Validators.required],
-    tec_Name: [null, Validators.required],
-    stu_ID: [null, Validators.required],
-    stu_Name: [null, Validators.required],
-    amount_pay: [null, Validators.required]
-  })
-}
-
-ngOnInit(): void {
-  let couID = this.router.snapshot.paramMap.get('cou_ID')!
-
-  this.enrollSer.searchCourse(couID, "").subscribe((data) => {
-
-    this.formEnroll.patchValue({
-      cou_ID: data.data[0].cou_ID,
-      sub_Name: data.data[0].sub_Name,
-      tec_Name: data.data[0].tec_Name,
-      amount_pay: data.data[0].total_price
+  constructor(private enrollSer: EnrollService, private fb: FormBuilder, private router: ActivatedRoute,
+    private _snackBar: MatSnackBar, private routerLink: Router, public dialog: MatDialog, private _router: ActivatedRoute,
+    private authService: AuthService,) {
+    this.formEnroll = this.fb.group({
+      cou_ID: [null, Validators.required],
+      sub_Name: [null, Validators.required],
+      tec_Name: [null, Validators.required],
+      stu_ID: [null, Validators.required],
+      stu_Name: [null, Validators.required],
+      amount_pay: [null, Validators.required]
     })
-    this.subID = data.data[0].sub_ID
-  })
 
+    this.user = this.authService.user
+  }
 
-  this.subjectStuID.pipe(debounceTime(400)).subscribe(term =>{
-    if (term.length == 4 && term.includes("3") ){
-      this.enrollSer.searchStudent(term, "").subscribe((data: any) => {
-        let stuName = data.data
+  ngOnInit(): void {
+    let couID = this.router.snapshot.paramMap.get('cou_ID')!
 
-        if(stuName.length > 2){
-          this.formEnroll.patchValue({
-            stu_Name: ''
-          })
-        } else{
-          this.formEnroll.patchValue({
-            stu_Name: stuName[0].stu_Name
-          })
-        }
-      })
+    this.enrollSer.searchCourse(couID, "").subscribe((data) => {
 
-    }else{
       this.formEnroll.patchValue({
-        stu_Name: ''
+        cou_ID: data.data[0].cou_ID,
+        sub_Name: data.data[0].sub_Name,
+        tec_Name: data.data[0].tec_Name,
+        amount_pay: data.data[0].total_price
       })
-    }
-  })
+      this.subID = data.data[0].sub_ID
+
+      if (this.stuID && this.stuID == this.user.id) {
+        this.formEnroll.patchValue({
+          stu_ID: this.stuID,
+          stu_Name: this.user.fullname
+        })
+
+        this.enrollSer.searchStudent(this.stuID, "").subscribe((data: any) => {
+          let stuName = data.data
+
+          if (stuName.length > 2) {
+            this.formEnroll.patchValue({
+              stu_Name: ''
+            })
+          } else {
+            this.formEnroll.patchValue({
+              stu_Name: stuName[0].stu_Name
+            })
+          }
+        })
+      } else if (this.stuID && this.stuID != this.user.id) {
+        this.routerLink.navigate([`home/course`])
+      }
+
+    })
+
+
+    this.subjectStuID.pipe(debounceTime(400)).subscribe(term => {
+      if (term.length == 4 && term.includes("3")) {
+        this.enrollSer.searchStudent(term, "").subscribe((data: any) => {
+          let stuName = data.data
+
+          if (stuName.length > 2) {
+            this.formEnroll.patchValue({
+              stu_Name: ''
+            })
+          } else {
+            this.formEnroll.patchValue({
+              stu_Name: stuName[0].stu_Name
+            })
+          }
+        })
+
+      } else {
+        this.formEnroll.patchValue({
+          stu_Name: ''
+        })
+      }
+    })
 
   }
 
-  onKeyUp(event: any){
+  onKeyUp(event: any) {
     this.subjectStuID.next(event.target.value)
   }
 
 
-  Enroll(){
+  Enroll() {
     let dataForm = this.formEnroll.value
     let strCouID: string = dataForm.cou_ID.toString()
 
-    this.enrollSer.getEnroll(strCouID,dataForm.stu_ID,"").subscribe(data =>{
+    this.enrollSer.getEnroll(strCouID, dataForm.stu_ID, "").subscribe(data => {
       let Data = data.data
       let DataMes = data.message
 
-      if(Data != null){
-        this._snackBar.open('เกิดข้อผิดพลาดเนื่องจากนักศึกษาลงทะเบียนแล้ว!', 'close',{
+      if (Data != null) {
+        this._snackBar.open('เกิดข้อผิดพลาดเนื่องจากนักศึกษาลงทะเบียนแล้ว!', 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
-      }else if(Data == null)
-      {
+      } else if (Data == null) {
         let DataEnroll: enrollStu = dataForm
         DataEnroll.sub_ID = this.subID
         DataEnroll.sta_pay = "ยังไม่ชำระ"
         console.log(DataEnroll)
-        this.enrollSer.enroll(DataEnroll).subscribe(data =>{
-          this._snackBar.open(data.message, 'close',{
+        this.enrollSer.enroll(DataEnroll).subscribe(data => {
+          this._snackBar.open(data.message, 'close', {
             duration: 5000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
           });
-          if(data.message == "บันทึกข้อมูลสำเร็จ"){
-            this.routerLink.navigate(['/home/enroll-information',dataForm.cou_ID, dataForm.stu_ID])
+          if (data.message == "บันทึกข้อมูลสำเร็จ") {
+            this.routerLink.navigate(['/home/enroll-information', dataForm.cou_ID, dataForm.stu_ID])
           }
         })
       }
@@ -119,13 +149,13 @@ ngOnInit(): void {
     })
   }
 
-  dialogEnroll () {
+  dialogEnroll() {
     const dialogRef = this.dialog.open(ConfirmDialogEnrollComponent);
     dialogRef.afterClosed().subscribe(result => {
-      if(result == true){
+      if (result == true) {
         this.Enroll()
       }
-      });
+    });
   }
 
 }

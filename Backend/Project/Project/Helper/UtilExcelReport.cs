@@ -39,26 +39,29 @@ namespace Project.Helper
             // Set the header row
             IRow headerRow = sheet.CreateRow(0);
             int columnIndex = 0;
-            foreach (var key in rowData[0].Keys)
+            if (rowData.Count > 0)
             {
-                ICell cell = headerRow.CreateCell(columnIndex);
-                cell.SetCellValue(key);
-                columnIndex++;
-            }
-
-            // Populate data rows
-            int rowIndex = 1;
-            foreach (var row in rowData)
-            {
-                IRow dataRow = sheet.CreateRow(rowIndex);
-                columnIndex = 0;
-                foreach (var key in row.Keys)
+                foreach (var key in rowData[0].Keys)
                 {
-                    ICell cell = dataRow.CreateCell(columnIndex);
-                    cell.SetCellValue(row[key]);
+                    ICell cell = headerRow.CreateCell(columnIndex);
+                    cell.SetCellValue(key);
                     columnIndex++;
                 }
-                rowIndex++;
+
+                // Populate data rows
+                int rowIndex = 1;
+                foreach (var row in rowData)
+                {
+                    IRow dataRow = sheet.CreateRow(rowIndex);
+                    columnIndex = 0;
+                    foreach (var key in row.Keys)
+                    {
+                        ICell cell = dataRow.CreateCell(columnIndex);
+                        cell.SetCellValue(row[key]);
+                        columnIndex++;
+                    }
+                    rowIndex++;
+                }
             }
 
 

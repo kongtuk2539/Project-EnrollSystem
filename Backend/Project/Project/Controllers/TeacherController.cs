@@ -7,13 +7,14 @@ using Project.Repository;
 
 namespace Project.Controllers
 {
-    [Project.Helper.Authorize.AuthorizeAttribute("Employee")]
+    //[Project.Helper.Authorize.AuthorizeAttribute("Employee")]
     [Route("api/[controller]/[action]")]
     [Produces("application/json")]
     [ApiController]
     public class TeacherController : ControllerBase
     {
         TeacherRepository tecr = new TeacherRepository();
+  
         [HttpPost]
         public ActionResult<ResponseModel> GetTeacher(SearchTeacherRequest request)
         {

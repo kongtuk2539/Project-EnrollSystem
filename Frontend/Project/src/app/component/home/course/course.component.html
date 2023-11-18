@@ -1,109 +1,186 @@
 <div class="container">
   <mat-toolbar>
-    <span>Course</span>
+    <span *ngIf="!stuID">Course</span>
+    <span *ngIf="stuID">My Course</span>
     <div class="example-spacer"></div>
-    <button mat-raised-button color="primary" routerLink="/home/create-course">Create
-      Course</button>
+    <button
+      *ngIf="user.role == 'Employee'"
+      mat-raised-button
+      color="primary"
+      routerLink="/home/create-course"
+    >
+      Create Course
+    </button>
     <!-- <button mat-raised-button color="primary" routerLink="/home/create-employee">Create Employee</button> -->
   </mat-toolbar>
 
   <mat-form-field>
     <mat-label>ID Search</mat-label>
-    <input matInput (keyup)="applyFilterID($event)" placeholder="ID Course"
-      type="number" #input autocomplete="off">
+    <input
+      matInput
+      (keyup)="applyFilterID($event)"
+      placeholder="ID Course"
+      type="number"
+      #input
+      autocomplete="off"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="status"
-      (selectionChange)="applyFilterStatus(selectedValue)">
-      <mat-option *ngFor="let sta of status" [value]="sta.value">
-        {{sta.viewvalue}}
+    <mat-select
+      [(ngModel)]="selectedValue"
+      name="status"
+      (selectionChange)="applyFilterStatus(selectedValue)"
+    >
+      <mat-option
+        *ngFor="let sta of status"
+        [value]="sta.value"
+        [disabled]="user.role == 'Student' && !stuID"
+      >
+        {{ sta.viewvalue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <p>{{selectedValue}}</p>
+  <p>{{ selectedValue }}</p>
 
   <div class="mat-elevation-z8">
-
-    <table mat-table [dataSource]="dataSource" matSort
-      (matSortChange)="announceSortChange($event)">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="announceSortChange($event)"
+    >
       <ng-container matColumnDef="cou_ID">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header
-          sortActionDescription="sortByid"> รหัสรุ่น </th>
-        <td mat-cell *matCellDef="let row"> {{row.cou_ID}} </td>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="sortByid"
+        >
+          รหัสรุ่น
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.cou_ID }}</td>
       </ng-container>
 
       <ng-container matColumnDef="sub_Name">
-        <th mat-header-cell *matHeaderCellDef> ชื่อวิชา </th>
-        <td mat-cell *matCellDef="let row"> {{row.sub_Name}} </td>
+        <th mat-header-cell *matHeaderCellDef>ชื่อวิชา</th>
+        <td mat-cell *matCellDef="let row">{{ row.sub_Name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="tec_Name">
-        <th mat-header-cell *matHeaderCellDef> ชื่อผู้สอน </th>
-        <td mat-cell *matCellDef="let row"> {{row.tec_Name}} </td>
+        <th mat-header-cell *matHeaderCellDef>ชื่อผู้สอน</th>
+        <td mat-cell *matCellDef="let row">{{ row.tec_Name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="num_seats">
-        <th mat-header-cell *matHeaderCellDef> จำนวนที่นั่ง </th>
-        <td mat-cell *matCellDef="let row"> {{row.num_seats}} </td>
+        <th mat-header-cell *matHeaderCellDef>จำนวนที่นั่ง</th>
+        <td mat-cell *matCellDef="let row">{{ row.num_seats }}</td>
       </ng-container>
 
       <ng-container matColumnDef="seat_remaining">
-        <th mat-header-cell *matHeaderCellDef> ที่นั่งคงเหลือ </th>
-        <td mat-cell *matCellDef="let row"> {{row.seat_remaining}} </td>
+        <th mat-header-cell *matHeaderCellDef>ที่นั่งคงเหลือ</th>
+        <td mat-cell *matCellDef="let row">{{ row.seat_remaining }}</td>
       </ng-container>
 
       <ng-container matColumnDef="time_open">
-        <th mat-header-cell *matHeaderCellDef> เริ่มลงทะเบียน </th>
-        <td mat-cell *matCellDef="let row"> {{row.time_open | date:'d/M/yyy'}}
+        <th mat-header-cell *matHeaderCellDef>เริ่มลงทะเบียน</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.time_open | date : "d/M/yyy" }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="time_close">
-        <th mat-header-cell *matHeaderCellDef> ปิดลงทะเบียน </th>
-        <td mat-cell *matCellDef="let row"> {{row.time_close | date:'d/M/yyy'}}
+        <th mat-header-cell *matHeaderCellDef>ปิดลงทะเบียน</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.time_close | date : "d/M/yyy" }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="time_start">
-        <th mat-header-cell *matHeaderCellDef> เริ่มเรียน </th>
-        <td mat-cell *matCellDef="let row"> {{row.time_start | date:'d/M/yyy'}}
+        <th mat-header-cell *matHeaderCellDef>เริ่มเรียน</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.time_start | date : "d/M/yyy" }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="time_end">
-        <th mat-header-cell *matHeaderCellDef> จบคอร์สเรียน </th>
-        <td mat-cell *matCellDef="let row"> {{row.time_end | date:'d/M/yyy'}}
+        <th mat-header-cell *matHeaderCellDef>จบคอร์สเรียน</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.time_end | date : "d/M/yyy" }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> สถานะ </th>
-        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+        <th mat-header-cell *matHeaderCellDef>สถานะ</th>
+        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
       </ng-container>
 
       <ng-container matColumnDef="total_price">
-        <th mat-header-cell *matHeaderCellDef> ราคา </th>
-        <td mat-cell *matCellDef="let row"> {{row.total_price}} </td>
+        <th mat-header-cell *matHeaderCellDef>ราคา</th>
+        <td mat-cell *matCellDef="let row">{{ row.total_price }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Action">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let row;" style="text-align: center;">
-
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row" style="text-align: center">
           <button mat-button [matMenuTriggerFor]="menu">Action</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['/home/enroll-data',row.cou_ID]"
-            *ngIf="user.role != 'Student'">รายชื่อนักเรียน</button>
+            <button
+              mat-menu-item
+              [routerLink]="['/home/enroll-data', row.cou_ID]"
+              *ngIf="user.role != 'Student'"
+            >
+              รายชื่อนักเรียน
+            </button>
 
-            <button mat-menu-item [routerLink]="['/home/enroll-data',row.cou_ID,user.id]"
-            *ngIf="user.role == 'Student'">รายการลงทะเบียน</button>
+            <button
+              mat-menu-item
+              [routerLink]="['/home/enroll-data', row.cou_ID, user.id]"
+              *ngIf="user.role == 'Student'"
+            >
+              รายการลงทะเบียน
+            </button>
 
-            <button mat-menu-item [routerLink]="['/home/enroll',row.cou_ID]"
-            *ngIf="row.status != 'close' && row.seat_remaining != 0">ลงทะเบียนเรียน</button>
-            <button mat-menu-item [routerLink]="['/home/edit-course',row.cou_ID]"
-            *ngIf="user.role == 'Employee'">แก้ไขคอร์สเรียน</button>
+            <button
+              mat-menu-item
+              *ngIf="user.role != 'Student'"
+              (click)="printReportStudent(row.cou_ID)"
+            >
+              พิมพ์รายชื่อนักเรียน
+            </button>
+
+            <button
+              mat-menu-item
+              [routerLink]="['/home/enroll', row.cou_ID]"
+              *ngIf="
+                row.status != 'close' &&
+                row.seat_remaining != 0 &&
+                user.role != 'Student'
+              "
+            >
+              ลงทะเบียนเรียน
+            </button>
+
+            <button
+              mat-menu-item
+              [routerLink]="['/home/enroll', row.cou_ID, user.id]"
+              *ngIf="
+                row.status != 'close' &&
+                row.seat_remaining != 0 &&
+                user.role == 'Student'
+              "
+            >
+              ลงทะเบียนเรียน
+            </button>
+
+            <button
+              mat-menu-item
+              [routerLink]="['/home/edit-course', row.cou_ID]"
+              *ngIf="user.role == 'Employee'"
+            >
+              แก้ไขคอร์สเรียน
+            </button>
           </mat-menu>
 
           <!-- <a class="pointer" style="color: #03e416;" matTooltip="list stu"
@@ -119,18 +196,19 @@
             [routerLink]="['/home/edit-course',row.cou_ID]">
             <mat-icon>edit</mat-icon>
           </a> -->
-
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator [length]="100"
+    <mat-paginator
+      [length]="100"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page">
+      aria-label="Select page"
+    >
     </mat-paginator>
   </div>
 </div>

@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { editTeacher } from 'src/app/interfaces/teacher/editTeacher';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { ConfirmDialogEditTecComponent } from '../confirm-dialog-edit-tec/confirm-dialog-edit-tec.component';
+import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
+import { AuthService } from 'src/app/component/authen/auth.service';
 
 @Component({
   selector: 'app-edit-teacher',
@@ -18,11 +20,13 @@ export class EditTeacherComponent {
   message = "";
   action = "";
   showPassword: boolean = false;
+  user!: userModel
 
   get_tecID!: any;
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private serviceTec: TeacherService,
-    private _snackBar: MatSnackBar, private _router: Router, public dialog: MatDialog){
+    private _snackBar: MatSnackBar, private _router: Router, public dialog: MatDialog, private authService: AuthService) {
+    this.user = this.authService.user
     this.formEditTec = this.fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required],
@@ -31,9 +35,9 @@ export class EditTeacherComponent {
       address: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern(/^[0-9]{1,10}$/), this.validateMaxLength.bind(this)]],
     },
-    {
-      validators: this.passwordsMatchValidator
-    })
+      {
+        validators: this.passwordsMatchValidator
+      })
   }
 
   validateMaxLength(control: FormControl) {
@@ -45,7 +49,7 @@ export class EditTeacherComponent {
     return null;
   }
 
-  editTec(){
+  editTec() {
 
     const _editTec: editTeacher = {
       tec_Name: this.formEditTec.value.name,
@@ -56,15 +60,15 @@ export class EditTeacherComponent {
       tec_Tel: this.formEditTec.value.tel
     }
     console.log(_editTec)
-    this.serviceTec.editTeacher(this.get_tecID, _editTec).subscribe(data =>{
-      if(data.message == "บันทึกข้อมูลสำเร็จ"){
-        this._snackBar.open(this.message = 'edit successed!', this.action = 'close',{
+    this.serviceTec.editTeacher(this.get_tecID, _editTec).subscribe(data => {
+      if (data.message == "บันทึกข้อมูลสำเร็จ") {
+        this._snackBar.open(this.message = 'edit successed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
       } else {
-        this._snackBar.open(this.message = 'edit failed!', this.action = 'close',{
+        this._snackBar.open(this.message = 'edit failed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
@@ -72,34 +76,43 @@ export class EditTeacherComponent {
       }
     })
 
-    this._router.navigate(['/home/teacher'])
+    if (this.user.role == "Employee") {
+      this._router.navigate(['/home/teacher'])
+    } else {
+      this._router.navigate(['/home'])
+    }
   }
 
   ngOnInit(): void {
 
     this.get_tecID = this.router.snapshot.paramMap.get('tec_ID')
-    this.serviceTec.searchTeacher(this.get_tecID, "").subscribe(data =>{
 
-      this.formEditTec.patchValue({
-        name:data.data[0].tec_Name,
-        password:data.data[0].tec_Pass,
-        confirm_password: data.data[0].tec_Pass,
-        sex:data.data[0].tec_Sex,
-        address:data.data[0].tec_Add,
-        tel:data.data[0].tec_Tel
+    if (this.user.role == "Employee" || (this.user.role == "Teacher" && this.get_tecID == this.user.id)) {
+      this.serviceTec.searchTeacher(this.get_tecID, "").subscribe(data => {
+        this.formEditTec.patchValue({
+          name: data.data[0].tec_Name,
+          password: data.data[0].tec_Pass,
+          confirm_password: data.data[0].tec_Pass,
+          sex: data.data[0].tec_Sex,
+          address: data.data[0].tec_Add,
+          tel: data.data[0].tec_Tel
+        })
+        this.emailFormControl.patchValue(data.data[0].tec_Mail)
       })
-      this.emailFormControl.patchValue(data.data[0].tec_Mail)
-    })
+    } else {
+      this._router.navigate(['/home'])
+    }
+
   }
 
-  dialogEditTec () {
+  dialogEditTec() {
     const dialogRef = this.dialog.open(ConfirmDialogEditTecComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      if(result == true){
+      if (result == true) {
         this.editTec()
       }
-      });
+    });
   }
 
   togglePasswordVisibility(): void {

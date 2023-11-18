@@ -15,22 +15,22 @@ export class NavbarComponent implements OnInit {
   isExpanded: boolean = false;
   user!: userModel
 
-  constructor(private _menuservice: MenuService, private authService:AuthService){
+  constructor(private _menuservice: MenuService, private authService: AuthService) {
     this.user = this.authService.user
-      console.log(this.user.id)
+    console.log(this.user.id)
   }
 
   ngOnInit(): void {
-      this.loadmenu();
-      console.log(this.menu)
+    this.loadmenu();
+    console.log(this.menu)
   }
 
-  async loadmenu(){
-    await this._menuservice.getMenu().subscribe(data=> {
+  async loadmenu() {
+    await this._menuservice.getMenu().subscribe(data => {
       console.log(data);
       data.forEach(result => {
         result.role.forEach(async datarole => {
-          if(datarole == this.user.role){
+          if (datarole == this.user.role) {
             await this.menu.push(result);
           }
         })
@@ -44,6 +44,19 @@ export class NavbarComponent implements OnInit {
       if (data.name == "Course" && this.user.role == "Teacher") {
         data.direct = `/home/course/tec/${this.user.id}`
       }
+
+      if (data.name == "My Course" && this.user.role == "Student") {
+        data.direct = `/home/course/${this.user.id}`
+      }
+
+      if (data.name == "Edit Profile" && this.user.role == "Student") {
+        data.direct = `/home/edit-student/${this.user.id}`
+      }
+
+      if (data.name == "Edit Profile" && this.user.role == "Teacher") {
+        data.direct = `/home/edit-teacher/${this.user.id}`
+      }
+
     })
   }
 

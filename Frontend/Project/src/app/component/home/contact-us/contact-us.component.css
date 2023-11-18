@@ -1,0 +1,29 @@
+.main-contact {
+  display: flex;
+  padding-top: 16px;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.content ul li {
+  list-style: none;
+  width: 100%;
+}
+
+.content span {
+  margin-left: 24px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.image img {
+  width: 85%;
+}

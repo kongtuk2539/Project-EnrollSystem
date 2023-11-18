@@ -14,7 +14,7 @@ namespace Project.Controllers
     {
         StudentRepository stur = new StudentRepository();
 
-        [Project.Helper.Authorize.AuthorizeAttribute("Employee", "Student")]
+        //[Project.Helper.Authorize.AuthorizeAttribute("Employee", "Student")]
         //[Authorize]
         [HttpPost]
         public ActionResult<ResponseModel> GetStudent(SearchStudentRequest request)

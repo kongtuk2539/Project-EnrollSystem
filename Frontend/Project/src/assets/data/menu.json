@@ -33,5 +33,20 @@
     "name": "Reportes",
     "direct": "/home/reportes",
     "role": ["Employee"]
+  },
+  {
+    "name": "My Course",
+    "direct": "/home/course",
+    "role": ["Student"]
+  },
+  {
+    "name": "Edit Profile",
+    "direct": "/",
+    "role": ["Student", "Teacher"]
+  },
+  {
+    "name": "Contact Us",
+    "direct": "/home/contact-us",
+    "role": ["Employee", "Student", "Teacher"]
   }
 ]

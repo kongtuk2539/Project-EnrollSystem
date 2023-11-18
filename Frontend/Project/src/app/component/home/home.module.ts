@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module'
 import { HomeComponent } from './home.component';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { EmployeeComponent } from './employee/employee.component';
-import { ReportesComponent } from './reportes/reportes.component';
+import { ReportesComponent } from './reportes/ReportesComponent';
 import { StartComponent } from './start/start.component';
 import { CreateEmployeeComponent } from './employee/create-employee/create-employee.component';
 import { ConfirmDialogCreateEmpComponent } from './employee/confirm-dialog-create-emp/confirm-dialog-create-emp.component';
@@ -51,68 +51,80 @@ import { ConfirmDialogCancelComponent } from './enroll/enroll-data/confirm-dialo
 import { SuccessCreateStudentComponent } from './student/success-create-student/success-create-student.component';
 import { SuccessCreateEmployeeComponent } from './employee/success-create-employee/success-create-employee.component';
 import { SuccessCreateTeacherComponent } from './teacher/success-create-teacher/success-create-teacher.component';
+import { MatOptionModule } from "@angular/material/core";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
 @NgModule({
-    declarations: [
-        HomeComponent,
-        NavbarComponent,
-        EmployeeComponent,
-        ReportesComponent,
-        StartComponent,
-        CreateEmployeeComponent,
-        ConfirmDialogCreateEmpComponent,
-        EditEmployeeComponent,
-        ConfirmDialogEditEmpComponent,
-        ConfirmDialogDeleteEmpComponent,
-        StudentComponent,
-        CreateStudentComponent,
-        ConfirmDialogCreateStuComponent,
-        EditStudentComponent,
-        ConfirmDialogEditStuComponent,
-        ConfirmDialogDeleteStuComponent,
-        TeacherComponent,
-        CreateTeacherComponent,
-        ConfirmDialogCreateTecComponent,
-        EditTeacherComponent,
-        ConfirmDialogEditTecComponent,
-        ConfirmDialogDeleteTecComponent,
-        SubjectComponent,
-        CreateSubjectComponent,
-        ConfirmDialogCreateSubComponent,
-        ConfirmDialogEditSubComponent,
-        EditSubjectComponent,
-        ConfirmDialogDeleteSubComponent,
-        CourseComponent,
-        CreateCourseComponent,
-        ConfirmDialogCreateCourseComponent,
-        EditCourseComponent,
-        ConfirmDialogEditCourseComponent,
-        EnrollComponent,
-        EnrollDataComponent,
-        EnrollInformationComponent,
-        ConfirmDialogEnrollComponent,
-        PayBillComponent,
-        AddScoreComponent,
-        ConfirmDialogPaybillComponent,
-        ReceiptCheckComponent,
-        ConfirmDialogReceiptCheckComponent,
-        ConfirmDialogAddscoreComponent,
-        ConfirmDialogCancelComponent,
-        SuccessCreateStudentComponent,
-        SuccessCreateEmployeeComponent,
-        SuccessCreateTeacherComponent,
-    ],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        SharedModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
-    providers: [
-      //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    ]
+  declarations: [
+    HomeComponent,
+    NavbarComponent,
+    EmployeeComponent,
+    ReportesComponent,
+    StartComponent,
+    CreateEmployeeComponent,
+    ConfirmDialogCreateEmpComponent,
+    EditEmployeeComponent,
+    ConfirmDialogEditEmpComponent,
+    ConfirmDialogDeleteEmpComponent,
+    StudentComponent,
+    CreateStudentComponent,
+    ConfirmDialogCreateStuComponent,
+    EditStudentComponent,
+    ConfirmDialogEditStuComponent,
+    ConfirmDialogDeleteStuComponent,
+    TeacherComponent,
+    CreateTeacherComponent,
+    ConfirmDialogCreateTecComponent,
+    EditTeacherComponent,
+    ConfirmDialogEditTecComponent,
+    ConfirmDialogDeleteTecComponent,
+    SubjectComponent,
+    CreateSubjectComponent,
+    ConfirmDialogCreateSubComponent,
+    ConfirmDialogEditSubComponent,
+    EditSubjectComponent,
+    ConfirmDialogDeleteSubComponent,
+    CourseComponent,
+    CreateCourseComponent,
+    ConfirmDialogCreateCourseComponent,
+    EditCourseComponent,
+    ConfirmDialogEditCourseComponent,
+    EnrollComponent,
+    EnrollDataComponent,
+    EnrollInformationComponent,
+    ConfirmDialogEnrollComponent,
+    PayBillComponent,
+    AddScoreComponent,
+    ConfirmDialogPaybillComponent,
+    ReceiptCheckComponent,
+    ConfirmDialogReceiptCheckComponent,
+    ConfirmDialogAddscoreComponent,
+    ConfirmDialogCancelComponent,
+    SuccessCreateStudentComponent,
+    SuccessCreateEmployeeComponent,
+    SuccessCreateTeacherComponent,
+    ContactUsComponent
+  ],
+  providers: [
+    //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule
+  ]
 })
 export class HomeModule { }

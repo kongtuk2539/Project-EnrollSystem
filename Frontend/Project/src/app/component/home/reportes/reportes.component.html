@@ -1,5 +1,26 @@
 <div class="container">
-    <mat-toolbar>
-        <span>Reportes</span>
-    </mat-toolbar>
+  <mat-toolbar>
+    <span>Reportes</span>
+  </mat-toolbar>
+  <div class="container-report">
+    <mat-form-field style="width: 50%">
+      <mat-label>โปรดเลือกรายงานที่ต้องการ</mat-label>
+      <mat-select (selectionChange)="SelectedReport($event.value)">
+        <mat-option *ngFor="let report of report" [value]="report">{{
+          report.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div style="margin: 6px">
+      <button
+        style="margin: 6px"
+        mat-raised-button
+        color="primary"
+        (click)="getReport()"
+        [disabled]="!selectedValue"
+      >
+        พิมพ์รายงาน
+      </button>
+    </div>
+  </div>
 </div>

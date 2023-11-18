@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../authen/auth.service';
-import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
 
 @Component({
   selector: 'app-start',
@@ -8,11 +7,11 @@ import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
   styleUrls: ['./start.component.css']
 })
 export class StartComponent {
-  user!: userModel
+  user!: any
 
-  constructor(private authService:AuthService){
+  constructor(private authService: AuthService) {
     this.user = this.authService.user
-    console.log('start', this.user.id)
+    console.log('start', this.user)
   }
 
 

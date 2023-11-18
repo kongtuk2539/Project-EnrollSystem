@@ -2,14 +2,30 @@
   <mat-toolbar>
     <span>Home</span>
     <div class="example-spacer"></div>
-    <button mat-raised-button color="primary" [routerLink]="['/home/course',user.id]"
-    *ngIf="user.role == 'Teacher'">CourseWithTeacher</button>
   </mat-toolbar>
-  <div style="
-    display: flex;
-    justify-content: center;
-    align-items: center;"
-    >
+  <div class="main-pf">
+    <div class="card">
+      <div>
+        <span>ยินดีต้อนรับ </span
+        ><span style="font-weight: bold">{{ user.role }}</span>
+      </div>
+      <div>
+        <p>
+          <span style="font-weight: bold; margin-right: 12px">User ID :</span>
+          <span>{{ user.id }}</span>
+        </p>
+      </div>
+      <div>
+        <p style="margin-bottom: 24px">
+          <span style="font-weight: bold">User Name</span>
+        </p>
+        <p>
+          <span style="font-size: 28px">{{ user.FullName }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="content-info">
+      <img src="./assets/img/user.png" alt="" />
+    </div>
   </div>
-
 </div>

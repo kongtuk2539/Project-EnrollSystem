@@ -9,6 +9,8 @@ import { status } from 'src/app/interfaces/course/status';
 import { CourseService } from 'src/app/services/course.service';
 import { AuthService } from '../../authen/auth.service';
 import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
+import { GetReportService } from 'src/app/services/get-report.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-course',
@@ -21,6 +23,7 @@ export class CourseComponent implements OnInit {
   dataSource: MatTableDataSource<course> = new MatTableDataSource<course>();
   selectedValue!: string;
   tecID: any = this._router.snapshot.paramMap.get('tec_ID')!
+  stuID: any = this._router.snapshot.paramMap.get('stu_ID')!
   user!: userModel
 
   status: status[] = [
@@ -34,15 +37,19 @@ export class CourseComponent implements OnInit {
   @ViewChild(MatSort) matSort!: MatSort;
 
   constructor(private _course: CourseService, private _liveAnnouncer: LiveAnnouncer, private router: Router,
-    private authService:AuthService, private _router: ActivatedRoute)
-    {
-      this.user = this.authService.user
-      console.log(this.user.id)
-    }
+    private authService: AuthService, private _router: ActivatedRoute, private reportService: GetReportService) {
+    this.user = this.authService.user
+    console.log(this.user.id)
+  }
 
 
   ngOnInit(): void {
     this.getCourseData()
+    if (this.stuID && this.stuID == this.user.id) {
+      this.getMyCourse()
+    } else if (this.stuID && this.stuID != this.user.id) {
+      this.router.navigate([`home/course`])
+    }
 
   }
 
@@ -83,31 +90,94 @@ export class CourseComponent implements OnInit {
     this._course.searchCourse("", this.tecID, "").subscribe((data: any) => {
       this.dataCourse = data.data
       this.dataSource = new MatTableDataSource<course>(this.dataCourse)
-        if (this.matPaginator) {
-          this.dataSource.paginator = this.matPaginator;
-        }
-        this.dataSource.sort = this.matSort;
+      if (this.matPaginator) {
+        this.dataSource.paginator = this.matPaginator;
+      }
+      this.dataSource.sort = this.matSort;
     })
   }
 
   getCourseData() {
-    if(this.tecID != null){
-      if(this.tecID == this.user.id) {
+    if (this.tecID != null) {
+      if (this.tecID == this.user.id) {
+        console.log('tecID ======', this.tecID)
         this.searchTec()
-      }else {
-        window.alert('You are not authorized')
+      } else {
         this.router.navigate([`/home`])
       }
     } else {
       console.log('no tecID')
-      this._course.getCourse().subscribe((data) => {
-        this.dataCourse = data.data
-        this.dataSource = new MatTableDataSource<course>(this.dataCourse)
-        if (this.matPaginator) {
-          this.dataSource.paginator = this.matPaginator;
-        }
-        this.dataSource.sort = this.matSort;
-      })
+      console.log('tecID ======', this.tecID)
+      if (this.user.role == 'Student') {
+        this._course.getCourseByStudent().subscribe(async (data) => {
+          this.dataCourse = await data.data
+          this.dataSource = new MatTableDataSource<course>(this.dataCourse)
+          if (this.matPaginator) {
+            this.dataSource.paginator = this.matPaginator;
+          }
+          this.dataSource.sort = this.matSort;
+        })
+
+        this.selectedValue = 'open'
+        this.applyFilterStatus(this.selectedValue)
+      } else {
+        this._course.getCourse().subscribe(async (data) => {
+          this.dataCourse = await data.data
+          this.dataSource = new MatTableDataSource<course>(this.dataCourse)
+          if (this.matPaginator) {
+            this.dataSource.paginator = this.matPaginator;
+          }
+          this.dataSource.sort = this.matSort;
+        })
+      }
     }
+  }
+
+  getMyCourse() {
+    this._course.getMyCourse(this.stuID, "", "").subscribe((data) => {
+      this.dataCourse = data.data
+      this.dataSource = new MatTableDataSource<course>(this.dataCourse)
+      if (this.matPaginator) {
+        this.dataSource.paginator = this.matPaginator;
+      }
+      this.dataSource.sort = this.matSort;
+    })
+  }
+
+  printReportStudent(couID: number) {
+
+    let body = {
+      stu_ID: "",
+      sta_pay: "ชำระเงินเรียบร้อย",
+      cou_ID: couID.toString()
+    }
+
+    console.log(body)
+
+    this.reportService.getReport('GetEnroll', body).subscribe(async (res) => {
+      try {
+        let data = res as HttpResponse<Blob>;
+
+        if (data && data.body) {
+          const downloadedFile = new Blob([data.body], { type: data.body.type });
+
+          if (downloadedFile.type !== "") {
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.href = URL.createObjectURL(downloadedFile);
+            a.target = '_blank';
+            a.download = 'report.xls'; // Set desired file name
+            a.click();
+            document.body.removeChild(a);
+          }
+        } else {
+          console.error('Invalid response or missing body in the response.');
+        }
+      } catch (error) {
+        console.error('Error processing the response:', error);
+      }
+    });
+
   }
 }

@@ -18,11 +18,26 @@ export class CourseService {
     })
   }
 
+  getCourseByStudent(): Observable<any> {
+    return this.http.post<any>('/api/Course/GetCourse', {
+      cou_ID: '',
+      status: 'open'
+    })
+  }
+
   searchCourse(searchCouID: string, searchTecID: string, searchStatus: string): Observable<any> {
     return this.http.post('/api/Course/GetCourse', {
       cou_ID: searchCouID,
       tec_ID: searchTecID,
       status: searchStatus
+    })
+  }
+
+  getMyCourse(stuID: string, statusPay: string, couID: string): Observable<any> {
+    return this.http.post('/api/MyCourse/GetEmployee', {
+      stu_ID: stuID,
+      sta_pay: statusPay,
+      cou_ID: couID
     })
   }
 
@@ -39,7 +54,7 @@ export class CourseService {
   }
 
   editCourse(cou_ID: string, formEditCourse: createCourse): Observable<any> {
-    return this.http.put('/api/Course/UpdateCourse/'+cou_ID, formEditCourse)
+    return this.http.put('/api/Course/UpdateCourse/' + cou_ID, formEditCourse)
   }
 
 }

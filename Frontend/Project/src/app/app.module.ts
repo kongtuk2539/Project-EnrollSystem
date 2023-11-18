@@ -20,7 +20,7 @@ import { AuthInterceptor } from './component/interceptor/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

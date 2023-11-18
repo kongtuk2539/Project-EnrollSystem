@@ -9,16 +9,22 @@ namespace Project.Helper
 
         public static List<T> QueryObjectList<T>(this string sql) where T : class, new()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            List<T> list = new List<T>();
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                list.Add(Util.ConvertToObject<T>(dr));
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        List<T> list = new List<T>();
+                        while (dr.Read())
+                        {
+                            list.Add(Util.ConvertToObject<T>(dr));
+                        }
+                        return list;
+                    }
+                }
             }
-            return list;
         }
 
         public static int ExecuteSQLCommand(string sql, List<SqlParameter> parameters)

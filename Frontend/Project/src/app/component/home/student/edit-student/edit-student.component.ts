@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { editStudent } from 'src/app/interfaces/student/editStudent';
 import { StudentService } from 'src/app/services/student.service';
 import { ConfirmDialogEditStuComponent } from '../confirm-dialog-edit-stu/confirm-dialog-edit-stu.component';
+import { userModel } from 'src/app/interfaces/dataUserAuthen/userModel';
+import { AuthService } from 'src/app/component/authen/auth.service';
 
 @Component({
   selector: 'app-edit-student',
@@ -18,11 +20,13 @@ export class EditStudentComponent {
   message = "";
   action = "";
   showPassword: boolean = false;
+  user!: userModel
 
   get_stuID!: any;
 
   constructor(private fb: FormBuilder, private router: ActivatedRoute, private serviceStu: StudentService,
-    private _snackBar: MatSnackBar, private _router: Router, public dialog: MatDialog) {
+    private _snackBar: MatSnackBar, private _router: Router, public dialog: MatDialog, private authService: AuthService) {
+    this.user = this.authService.user
     this.formEditStu = this.fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required],
@@ -58,13 +62,13 @@ export class EditStudentComponent {
     console.log(_editStu)
     this.serviceStu.editStudent(this.get_stuID, _editStu).subscribe(data => {
       if (data.message == "บันทึกข้อมูลสำเร็จ") {
-        this._snackBar.open(this.message = 'edit successed!', this.action = 'close',{
+        this._snackBar.open(this.message = 'edit successed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
       } else {
-        this._snackBar.open(this.message = 'edit failed!', this.action = 'close',{
+        this._snackBar.open(this.message = 'edit failed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
@@ -74,7 +78,11 @@ export class EditStudentComponent {
       console.log(data.message)
     })
 
-    this._router.navigate(['/home/student'])
+    if (this.user.role == "Employee") {
+      this._router.navigate(['/home/student'])
+    } else {
+      this._router.navigate(['/home'])
+    }
   }
 
   togglePasswordVisibility(): void {
@@ -86,18 +94,22 @@ export class EditStudentComponent {
     this.get_stuID = this.router.snapshot.paramMap.get('stu_ID')
 
     console.log(this.get_stuID)
-    this.serviceStu.searchStudent(this.get_stuID, "").subscribe(data => {
-      console.log(data.data);
-      this.formEditStu.patchValue({
-        name: data.data[0].stu_Name,
-        password: data.data[0].stu_Pass,
-        confirm_password: data.data[0].stu_Pass,
-        sex: data.data[0].stu_Sex,
-        address: data.data[0].stu_Add,
-        tel: data.data[0].stu_Tel
+    if (this.user.role == "Employee" || (this.user.role == "Student" && this.get_stuID == this.user.id)) {
+      this.serviceStu.searchStudent(this.get_stuID, "").subscribe(data => {
+        console.log(data.data);
+        this.formEditStu.patchValue({
+          name: data.data[0].stu_Name,
+          password: data.data[0].stu_Pass,
+          confirm_password: data.data[0].stu_Pass,
+          sex: data.data[0].stu_Sex,
+          address: data.data[0].stu_Add,
+          tel: data.data[0].stu_Tel
+        })
+        this.emailFormControl.patchValue(data.data[0].stu_Mail)
       })
-      this.emailFormControl.patchValue(data.data[0].stu_Mail)
-    })
+    } else {
+      this._router.navigate(['/home'])
+    }
   }
 
   dialogEditStu() {

@@ -20,6 +20,7 @@ export class PayBillComponent implements OnInit {
   subjectEmpID: Subject<any> = new Subject();
   get_couID: any = this.router.snapshot.paramMap.get('cou_ID')
   get_stuID: any = this.router.snapshot.paramMap.get('stu_ID')
+  HH: any;
 
   constructor(private enrollSer: EnrollService, private fb: FormBuilder,
     private router: ActivatedRoute, private _snackBar: MatSnackBar, public dialog: MatDialog,
@@ -99,7 +100,7 @@ export class PayBillComponent implements OnInit {
           })
         }
       })
-    }else{
+    } else {
       this._snackBar.open("โปรดเลือกรูปภาพ", 'close', {
         duration: 5000,
         horizontalPosition: 'center',
@@ -118,5 +119,6 @@ export class PayBillComponent implements OnInit {
       }
     });
   }
+
 
 }
