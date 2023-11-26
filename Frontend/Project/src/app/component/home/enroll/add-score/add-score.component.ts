@@ -28,10 +28,10 @@ export class AddScoreComponent implements OnInit {
       stu_ID: ['', Validators.required],
       sub_Name: ['', Validators.required],
       stu_Name: ['', Validators.required],
-      score_1: ['', Validators.required],
-      score_2: ['', Validators.required],
-      score_3: ['', Validators.required],
-      score_final: ['', Validators.required],
+      score_1: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+      score_2: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+      score_3: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+      score_final: ['', [Validators.required, Validators.min(0), Validators.max(65)]],
       date_class1: [''],
       date_class2: [''],
       date_class3: [''],
@@ -76,23 +76,23 @@ export class AddScoreComponent implements OnInit {
     }
 
     this.enrollSer.AddScore(dataScore).subscribe((data => {
-      this._snackBar.open(data.message, 'close',{
+      this._snackBar.open(data.message, 'close', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
       });
-      if(data.message == "บันทึกข้อมูลสำเร็จ"){
-        this.routerLink.navigate(['/home/enroll-information',dataForm.cou_ID, dataForm.stu_ID])
+      if (data.message == "บันทึกข้อมูลสำเร็จ") {
+        this.routerLink.navigate(['/home/enroll-information', dataForm.cou_ID, dataForm.stu_ID])
       }
     }))
   }
 
-  dialogAddScore () {
+  dialogAddScore() {
     const dialogRef = this.dialog.open(ConfirmDialogAddscoreComponent);
     dialogRef.afterClosed().subscribe(result => {
-      if(result == true){
+      if (result == true) {
         this.AddScore()
       }
-      });
+    });
   }
 }

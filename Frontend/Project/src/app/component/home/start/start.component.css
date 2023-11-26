@@ -7,11 +7,39 @@
 
 .card {
   width: 360px;
-  height: 480px;
+  height: 400px;
   display: flex;
-  font-size: 36px;
+  font-size: 16px;
   flex-direction: column;
-  justify-content: center;
+  gap: 24px;
+  margin-top: 64px;
+  padding: 16px 24px;
+  /* border: 1px solid black; */
+  border-radius: 16px;
+  box-shadow: 6px 8px 22px -3px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 6px 8px 22px -3px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 6px 8px 22px -3px rgba(0, 0, 0, 0.45);
+}
+
+.card-img {
+  width: 100%;
+  height: 160px;
+  text-align: center;
+}
+
+.card-img img {
+  border-radius: 8px;
+  width: auto;
+  height: 100%;
+}
+
+.card-user {
+  width: 850px;
+  height: 160px;
+  display: flex;
+  font-size: 24px;
+  flex-direction: row;
+  align-items: center;
   gap: 48px;
   margin-top: 64px;
   padding: 24px;
@@ -24,4 +52,20 @@
 
 .content-info {
   margin-top: 48px;
+}
+
+.content-info img {
+  width: 250px;
+}
+
+.course {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  justify-content: center;
+}
+
+.img-course {
+  width: 100%;
+  height: 50%;
 }

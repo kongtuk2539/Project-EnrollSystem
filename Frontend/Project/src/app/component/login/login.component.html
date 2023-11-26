@@ -1,24 +1,44 @@
 <div class="body">
-    <div class="login">
-        <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+  <div class="login">
+    <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
 
-        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
-            <img src="../../../assets/img/user.png" width="50%">
-            <h1>Login</h1>
-            <mat-form-field class="enter" appearance="fill">
-                <mat-label>Enter your ID</mat-label>
-                <input type="text" matInput autocomplete="off" formControlName="id">
-            </mat-form-field>
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+      <img src="../../../assets/img/user.png" width="50%" />
+      <h1>Login</h1>
+      <mat-form-field class="enter" appearance="fill">
+        <mat-label>Enter your ID</mat-label>
+        <input type="text" matInput autocomplete="off" formControlName="id" />
+      </mat-form-field>
 
-            <mat-form-field class="enter" appearance="fill">
-                <mat-label>Enter your Password</mat-label>
-                <input type="password" matInput autocomplete="off" formControlName="password">
-            </mat-form-field> <br>
-            <button mat-raised-button type="submit" class="enter button" color="primary" [disabled]="form.invalid">Login</button>
-            <div class="btn-register">
-              <p><a href="create-student">สมัครสมาชิก</a></p>
-            </div>
-
-        </form>
-    </div>
+      <mat-form-field class="enter" appearance="fill">
+        <mat-label>Enter your Password</mat-label>
+        <input
+          type="password"
+          matInput
+          autocomplete="off"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <br />
+      <button
+        mat-raised-button
+        type="submit"
+        class="enter button"
+        color="primary"
+        [disabled]="form.invalid"
+      >
+        Login
+      </button>
+      <div class="btn-register">
+        <p><a href="create-student">สมัครสมาชิก</a></p>
+      </div>
+      <div>
+        <p style="opacity: 70%">
+          หากลืม username หรือ password <br />
+          ติดต่อ Facebook: Music_mesuk <br />
+          โทร: 08111111111 , 021111111 ต่อ 123, 124
+        </p>
+      </div>
+    </form>
+  </div>
 </div>

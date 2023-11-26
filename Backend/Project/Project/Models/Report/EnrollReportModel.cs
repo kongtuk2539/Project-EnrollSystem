@@ -22,19 +22,19 @@ namespace Project.Models.Report
         [DisplayName("ชื่ออาจารย์")]
         public string tec_Name { get; set; }
 
-        [DisplayName("คะแนนเข้าเรียน")]
+        [DisplayName("คะแนนเข้าเรียน (5 คะแนน)")]
         public int score_learn { get; set; }
 
-        [DisplayName("คะแนนเก็บ 1")]
+        [DisplayName("คะแนนเก็บ 1 (10 คะแนน)")]
         public int score_1 { get; set; }
 
-        [DisplayName("คะแนนเก็บ 2")]
+        [DisplayName("คะแนนเก็บ 2 (10 คะแนน)")]
         public int score_2 { get; set; }
 
-        [DisplayName("คะแนนเก็บ 3")]
+        [DisplayName("คะแนนเก็บ 3 (10 คะแนน)")]
         public int score_3 { get; set; }
 
-        [DisplayName("คะแนนสอบ")]
+        [DisplayName("คะแนนสอบ (65 คะแนน)")]
         public int score_final { get; set; }
 
         [DisplayName("คะแนนรวม")]

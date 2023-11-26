@@ -30,7 +30,7 @@
     "role": ["Student", "Employee", "Teacher"]
   },
   {
-    "name": "Reportes",
+    "name": "Report",
     "direct": "/home/reportes",
     "role": ["Employee"]
   },

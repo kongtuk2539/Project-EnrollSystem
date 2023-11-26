@@ -4,28 +4,81 @@
     <div class="example-spacer"></div>
   </mat-toolbar>
   <div class="main-pf">
-    <div class="card">
+    <div class="card-user">
       <div>
         <span>ยินดีต้อนรับ </span
         ><span style="font-weight: bold">{{ user.role }}</span>
       </div>
       <div>
-        <p>
+        <div>
           <span style="font-weight: bold; margin-right: 12px">User ID :</span>
           <span>{{ user.id }}</span>
-        </p>
+        </div>
       </div>
       <div>
-        <p style="margin-bottom: 24px">
+        <div>
+          <span style="font-weight: bold; margin-right: 12px">User Name :</span>
+          <span>{{ user.FullName }}</span>
+        </div>
+
+        <!-- <p style="margin-bottom: 24px">
           <span style="font-weight: bold">User Name</span>
         </p>
         <p>
           <span style="font-size: 28px">{{ user.FullName }}</span>
-        </p>
+        </p> -->
       </div>
     </div>
     <div class="content-info">
       <img src="./assets/img/user.png" alt="" />
+    </div>
+  </div>
+  <div class="course">
+    <div class="card">
+      <div class="card-img">
+        <img src="./assets/img/music01.jpg" alt="" />
+      </div>
+      <div>
+        <p>เปิดสอนดนตรีสากลหลากหลายชนิด อาทิเช่น</p>
+        <ul style="display: flex; flex-direction: column; gap: 8px">
+          <li>กีต้าร์</li>
+          <li>เบส</li>
+          <li>กลอง</li>
+          <li>เปียโน</li>
+          <li>คีย์บอร์ด</li>
+          <li>ฯลฯ</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="./assets/img/music02.jpg" alt="" />
+      </div>
+      <div>
+        <p>เปิดสอนดนตรีไทยหลากหลายชนิด อาทิเช่น</p>
+        <ul style="display: flex; flex-direction: column; gap: 8px">
+          <li>ซอสามสาย</li>
+          <li>ซออู้</li>
+          <li>ระนาดเอก</li>
+          <li>ระนาดทุ้ม</li>
+          <li>กลองทัด</li>
+          <li>ฯลฯ</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="./assets/img/music03.jpg" alt="" />
+      </div>
+      <div style="margin-top: 24px">
+        <p>สถานที่สะอาด สภาพแวดล้อมเป็นกันเอง</p>
+        <p>เน้นการลงมือทำ ทฤษฎีแน่น</p>
+        <p>สอนโดยอาจารย์ผู้มากประสบการณ์</p>
+        <p>สอนจากไม่เป็นเลย จนสามารถเล่นได้เป็นเพลง</p>
+        <p>และมีความเข้าใจทฤษฎีดนตรี นำไปต่อยอดได้</p>
+      </div>
     </div>
   </div>
 </div>

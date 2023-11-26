@@ -109,7 +109,7 @@
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-label>ยืนยันการออกใบเสร็จ : </mat-label>
+            <mat-label style="opacity: 70%">ยืนยันการออกใบเสร็จ : </mat-label>
             <mat-radio-group
               aria-label="Select an option"
               formControlName="confirmReceipt"
@@ -124,7 +124,21 @@
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="6" class="image-container">
-            <img [src]="src" alt="Zoomable Image" (click)="this.Download()" />
+            <div
+              style="
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+              "
+            >
+              <img
+                style="height: 100%; width: auto"
+                [src]="src"
+                alt="Zoomable Image"
+                (click)="this.Download()"
+              />
+            </div>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
