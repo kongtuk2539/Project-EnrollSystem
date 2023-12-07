@@ -3,7 +3,12 @@
     >MeSuk Music <span style="font-size: 16px; opacity: 50%">school</span></span
   >
   <span class="example-spacer"></span>
-  <button mat-button *ngFor="let item of menu" [routerLink]="item.direct">
+  <button
+    mat-button
+    class="btn-nav"
+    *ngFor="let item of menu"
+    [routerLink]="item.direct"
+  >
     {{ item.name }}
   </button>
   <span class="example-spacer"></span>

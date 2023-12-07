@@ -1,4 +1,14 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
+.btn-nav {
+  width: 120px;
+}
+
+.btn-nav:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  color: rgb(140, 0, 255);
+  background-color: #ffffff;
+}

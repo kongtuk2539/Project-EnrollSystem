@@ -3,76 +3,119 @@
     <span>Student Information</span>
     <div class="example-spacer"></div>
   </mat-toolbar>
-  <mat-card style="margin-top: 10px;">
+  <mat-card style="margin-top: 10px; padding: 0 180px">
     <mat-card-content *ngIf="dataInfo.length > 0">
-        <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-list cols="4" rowHeight="120px">
+        <!-- <mat-grid-tile [colspan]="1" [rowspan]="4"> </mat-grid-tile> -->
 
-          <mat-grid-tile [colspan]="1" [rowspan]="4">
-          </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="4">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-subtitle class="title-information"
+                ><span
+                  style="color: rgba(0, 0, 0, 0.6); text-decoration: underline"
+                  >รหัสวิชา</span
+                >
+                : {{ dataInfo[0].cou_ID }}</mat-card-subtitle
+              >
+              <mat-card-subtitle
+                style="margin: 16px 0"
+                class="title-information"
+                ><span
+                  style="color: rgba(0, 0, 0, 0.6); text-decoration: underline"
+                  >ชื่อวิชา</span
+                >
+                : {{ dataInfo[0].sub_Name }}</mat-card-subtitle
+              >
+              <mat-card-subtitle
+                style="margin: 16px 0"
+                class="title-information"
+                ><span
+                  style="color: rgba(0, 0, 0, 0.6); text-decoration: underline"
+                  >อาจารย์ผู้สอน</span
+                >
+                : {{ dataInfo[0].tec_Name }}</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content>
+              <ul class="information-user">
+                <li>รหัสนักเรียน: {{ dataInfo[0].stu_ID }}</li>
+                <li>ชื่อนักเรียน: {{ dataInfo[0].stu_Name }}</li>
+                <li>สถานะชำระเงิน: {{ dataInfo[0].sta_pay }}</li>
+              </ul>
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button *ngIf="false">ใบเสร็จชำระเงิน</button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
 
-          <mat-grid-tile [colspan]="1" [rowspan]="4">
+        <mat-grid-tile [colspan]="2" [rowspan]="4">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-subtitle class="title-information"
+                >ช่องทางการชำระเงิน</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content>
+              <ul class="information-pay">
+                <li>ธนาคาร: ธนาคารกสิกรไทย</li>
+                <li>เลขบัญชีธนาคาร: 123-1234-123</li>
+                <li>ชื่อบัญชี: บริษัทสอนดนตรี</li>
+                <li>
+                  ชำระได้ตั้งแต่วันที่:
+                  {{ dataInfo[0].pay_billpay | date : "d/M/yyy" }}
+                </li>
+                <li>
+                  โปรดชำระก่อนภายในวันที่:
+                  {{ dataInfo[0].pay_billdue | date : "d/M/yyy" }}
+                </li>
+                <li>
+                  จำนวนเงินที่ต้องชำระ:
+                  {{ dataInfo[0].amount_pay | currency : "฿" }}
+                </li>
+              </ul>
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                class="btn-pay"
+                mat-button
+                (click)="printReportPayment()"
+                *ngIf="dataInfo[0].sta_pay != 'ชำระเงินเรียบร้อย'"
+              >
+                <span style="color: #ffffff">ดาวน์โหลดใบแจ้งชำระเงิน</span>
+              </button>
+              <button
+                class="btn-pay"
+                mat-button
+                (click)="printReportReceipt()"
+                *ngIf="dataInfo[0].sta_pay == 'ชำระเงินเรียบร้อย'"
+              >
+                <span style="color: #ffffff">ดาวน์โหลดใบเสร็จชำระเงิน</span>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
 
-            <mat-card class="example-card">
-              <mat-card-header>
-                <mat-card-subtitle>รหัสวิชา : {{dataInfo[0].cou_ID}} ชื่อวิชา : {{dataInfo[0].sub_Name}}</mat-card-subtitle>
-                <mat-card-subtitle>อาจารย์ผู้สอน : {{dataInfo[0].tec_Name}}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <ul>
-                  <li>รหัสนักเรียน: {{dataInfo[0].stu_ID}}</li>
-                  <li>ชื่อนักเรียน: {{dataInfo[0].stu_Name}}</li>
-                  <li>สถานะชำระเงิน: {{dataInfo[0].sta_pay}}</li>
-                </ul>
-                <mat-divider></mat-divider>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button *ngIf="false">ใบเสร็จชำระเงิน</button>
-              </mat-card-actions>
-            </mat-card>
+        <!-- <mat-grid-tile [colspan]="1" [rowspan]="4"> </mat-grid-tile> -->
 
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="1" [rowspan]="4">
-
-            <mat-card class="example-card">
-              <mat-card-header>
-                <mat-card-subtitle>ช่องทางการชำระเงิน</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <ul>
-                  <li>ธนาคาร: ธนาคารกสิกรไทย</li>
-                  <li>เลขบัญชีธนาคาร: 123-1234-123</li>
-                  <li>ชื่อบัญชี: บริษัทสอนดนตรี</li>
-                  <li>ชำระได้ตั้งแต่วันที่: {{dataInfo[0].pay_billpay | date:'d/M/yyy'}}</li>
-                  <li>โปรดชำระก่อนภายในวันที่: {{dataInfo[0].pay_billdue | date:'d/M/yyy'}}</li>
-                  <li>จำนวนเงินที่ต้องชำระ: {{dataInfo[0].amount_pay | currency: '฿'}}</li>
-                </ul>
-                <mat-divider></mat-divider>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button (click)="printReportPayment()" *ngIf="dataInfo[0].sta_pay != 'ชำระเงินเรียบร้อย'">โหลดใบแจ้งชำระเงิน</button>
-                <button mat-button (click)="printReportReceipt()" *ngIf="dataInfo[0].sta_pay == 'ชำระเงินเรียบร้อย'">โหลดใบเสร็จชำระเงิน</button>
-              </mat-card-actions>
-            </mat-card>
-
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="1" [rowspan]="4">
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="4" [rowspan]="1">
-              <button mat-raised-button color="primary" [routerLink]="['/home/pay-bill',get_couID,get_stuID]" style="margin-right: 20px;"
-              *ngIf="dataInfo[0].sta_pay != 'ชำระเงินเรียบร้อย'">
-              ส่งหลักฐานชำระเงิน</button>
-              <button mat-raised-button color="warn" [routerLink]="['/home']">back home</button>
-          </mat-grid-tile>
-
-
-        </mat-grid-list>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="['/home/pay-bill', get_couID, get_stuID]"
+            style="margin-right: 20px"
+            *ngIf="dataInfo[0].sta_pay != 'ชำระเงินเรียบร้อย'"
+          >
+            ส่งหลักฐานชำระเงิน
+          </button>
+          <button mat-raised-button color="warn" [routerLink]="['/home']">
+            back home
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card-content>
   </mat-card>
 </div>
-
-
-
-
