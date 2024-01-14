@@ -7,7 +7,7 @@ using Project.Repository;
 
 namespace Project.Controllers
 {
-    //[Project.Helper.Authorize.AuthorizeAttribute("Employee")]
+    //[Project.Helper.Authorize.AuthorizeAttribute("Employee", "Teacher", "Student")]
     [Route("api/[controller]/[action]")]
     [Produces("application/json")]
     [ApiController]
@@ -19,6 +19,17 @@ namespace Project.Controllers
         public ActionResult<ResponseModel> GetTeacher(SearchTeacherRequest request)
         {
             List<TeacherModel> result = tecr.getTeacher(request);
+            if (result?.Count > 0)
+            {
+                return new ResponseModel(result, StateType.Type.SUCCESS);
+            }
+            return new ResponseModel(null, StateType.Type.NOTFOUND_DATA);
+        }
+
+        [HttpGet]
+        public ActionResult<ResponseModel> getTeacherReadyStatus()
+        {
+            List<TeacherModel> result = tecr.getTeacherSplitByReadyStatus();
             if (result?.Count > 0)
             {
                 return new ResponseModel(result, StateType.Type.SUCCESS);

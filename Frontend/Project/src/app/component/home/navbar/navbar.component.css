@@ -12,3 +12,8 @@
   color: rgb(140, 0, 255);
   background-color: #ffffff;
 }
+
+.not-login {
+  position: relative;
+  left: 750px;
+}

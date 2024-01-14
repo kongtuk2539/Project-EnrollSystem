@@ -3,18 +3,20 @@
     <span>Create Course</span>
   </mat-toolbar>
 
-  <mat-card style="margin-top: 10px;">
+  <mat-card style="margin-top: 10px">
     <mat-card-content>
       <form [formGroup]="formCourse" (ngSubmit)="dialogCreateCourse()">
-
         <mat-grid-list cols="4" rowHeight="100px">
-
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field appearance="fill" class="broad">
               <mat-label>ชื่อวิชา</mat-label>
-              <mat-select name="Subject" formControlName="Subject" (selectionChange)="showPrice($event)">
+              <mat-select
+                name="Subject"
+                formControlName="Subject"
+                (selectionChange)="showPrice($event)"
+              >
                 <mat-option *ngFor="let data of _dataSub" [value]="data.sub_ID">
-                  {{data.sub_Name}}
+                  {{ data.sub_Name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -25,7 +27,7 @@
               <mat-label>ชื่อผู้สอน</mat-label>
               <mat-select name="Teacher" formControlName="Teacher">
                 <mat-option *ngFor="let data of _dataTec" [value]="data.tec_ID">
-                  {{data.tec_Name}}
+                  {{ data.tec_Name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -34,92 +36,137 @@
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>จำนวนที่นั่ง</mat-label>
-              <input type="number" matInput placeholder="กรอกจำนวนที่นั่ง" formControlName="num_seats"
-                autocomplete="off">
+              <input
+                type="number"
+                matInput
+                placeholder="กรอกจำนวนที่นั่ง"
+                formControlName="num_seats"
+                autocomplete="off"
+                (change)="changeToSeatRemaining()"
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>จำนวนที่นั่งคงเหลือ</mat-label>
-              <input matInput formControlName="seat_remaining"
+              <input
+                matInput
+                formControlName="seat_remaining"
                 placeholder="กรอกจำนวนที่นั่งคงเหลือ"
-                autocomplete="off" type="number">
+                autocomplete="off"
+                type="number"
+                readonly
+              />
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field appearance="fill" class="broad">
               <mat-label>เปิดคอร์ส</mat-label>
-              <input matInput [matDatepicker]="time_open" formControlName="time_open">
+              <input
+                matInput
+                [matDatepicker]="time_open"
+                formControlName="time_open"
+              />
               <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="time_open"></mat-datepicker-toggle>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="time_open"
+              ></mat-datepicker-toggle>
               <mat-datepicker #time_open></mat-datepicker>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field appearance="fill" class="broad">
-            <mat-label>ปิดคอร์ส</mat-label>
-            <input matInput [matDatepicker]="time_close" formControlName="time_close">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="time_close"></mat-datepicker-toggle>
-            <mat-datepicker #time_close></mat-datepicker>
-          </mat-form-field>
-        </mat-grid-tile>
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>ปิดคอร์ส</mat-label>
+              <input
+                matInput
+                [matDatepicker]="time_close"
+                formControlName="time_close"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="time_close"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #time_close></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field appearance="fill" class="broad">
-            <mat-label>วันเริ่มเรียน</mat-label>
-            <input matInput [matDatepicker]="time_start" formControlName="time_start">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="time_start"></mat-datepicker-toggle>
-            <mat-datepicker #time_start></mat-datepicker>
-          </mat-form-field>
-        </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>วันเริ่มเรียน</mat-label>
+              <input
+                matInput
+                [matDatepicker]="time_start"
+                formControlName="time_start"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="time_start"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #time_start></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
 
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>วันสิ้นสุดการเรียน</mat-label>
+              <input
+                matInput
+                [matDatepicker]="time_end"
+                formControlName="time_end"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="time_end"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #time_end></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field appearance="fill" class="broad">
-            <mat-label>วันสิ้นสุดการเรียน</mat-label>
-            <input matInput [matDatepicker]="time_end" formControlName="time_end">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="time_end"></mat-datepicker-toggle>
-            <mat-datepicker #time_end></mat-datepicker>
-          </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field appearance="fill" class="broad">
-            <mat-label>สถานะ</mat-label>
-            <mat-select name="status" formControlName="status">
-              <mat-option *ngFor="let sta of status" [value]="sta.value">
-                {{sta.viewvalue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="fill" class="broad">
+              <mat-label>สถานะ</mat-label>
+              <mat-select name="status" formControlName="status">
+                <mat-option *ngFor="let sta of status" [value]="sta.value">
+                  {{ sta.viewvalue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
 
           <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field class="broad">
               <mat-label>ราคา</mat-label>
-              <input type="number" matInput placeholder="กรอกราคา" formControlName="total_price"
-                autocomplete="off">
+              <input
+                type="number"
+                matInput
+                placeholder="กรอกราคา"
+                formControlName="total_price"
+                autocomplete="off"
+              />
             </mat-form-field>
           </mat-grid-tile>
 
-
           <mat-grid-tile [colspan]="4" [rowspan]="2">
-            <button mat-raised-button color="primary" type="submit"
-              style="margin-right: 20px;" [disabled]="formCourse.invalid">confirm</button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              style="margin-right: 20px"
+              [disabled]="formCourse.invalid"
+            >
+              confirm
+            </button>
             <button mat-raised-button color="warn" type="reset">cancel</button>
           </mat-grid-tile>
-
-
         </mat-grid-list>
-
       </form>
     </mat-card-content>
   </mat-card>
-
 </div>

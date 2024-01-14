@@ -33,7 +33,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, canActivate: [IsAuthenticatedGuard],
+    // path: '', component: HomeComponent, canActivate: [IsAuthenticatedGuard],
+    path: '', component: HomeComponent,
     children: [
       { path: '', component: StartComponent },
       { path: 'employee', component: EmployeeComponent, canActivate: [IsAuthenticatedGuard, HasRoleGuard], data: { role: ["Employee"] } },

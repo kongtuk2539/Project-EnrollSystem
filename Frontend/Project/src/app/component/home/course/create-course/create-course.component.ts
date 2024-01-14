@@ -83,14 +83,14 @@ export class CreateCourseComponent implements OnInit {
 
     console.log(this.formCourse.value.time_open)
     this._course.createCourse(_createCourse).subscribe((data) => {
-      if(data.message == "บันทึกข้อมูลสำเร็จ"){
-        this._snackBar.open(this.message = 'create successed!', this.action = 'close',{
+      if (data.message == "บันทึกข้อมูลสำเร็จ") {
+        this._snackBar.open(this.message = 'create successed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
       } else {
-        this._snackBar.open(this.message = 'create failed!', this.action = 'close',{
+        this._snackBar.open(this.message = 'create failed!', this.action = 'close', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
@@ -103,24 +103,31 @@ export class CreateCourseComponent implements OnInit {
 
   }
 
-  dialogCreateCourse () {
+  changeToSeatRemaining() {
+    this.formCourse.patchValue({
+      seat_remaining: this.formCourse.value.num_seats
+    })
+  }
+
+
+  dialogCreateCourse() {
     const dialogRef = this.dialog.open(ConfirmDialogCreateCourseComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      if(result == true){
+      if (result == true) {
         this.createCourse()
       }
-      });
-    }
+    });
+  }
 
-    showPrice(value: any){
-      console.log(value.value)
-      var item = this._dataSub.find(c =>{
-        return c.sub_ID == value.value
-      })
-      this.formCourse.patchValue({
-        // time_open: new Date('2023/04/19'),
-        total_price: item?.sub_Price
-      })
-    }
+  showPrice(value: any) {
+    console.log(value.value)
+    var item = this._dataSub.find(c => {
+      return c.sub_ID == value.value
+    })
+    this.formCourse.patchValue({
+      // time_open: new Date('2023/04/19'),
+      total_price: item?.sub_Price
+    })
+  }
 }

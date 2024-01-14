@@ -80,5 +80,64 @@ namespace Project.Repository
 
             return newPK;
         }
+
+        public List<TeacherModel> getTeacherReadyStatus()
+        {
+            var teacher = new List<TeacherModel>();
+
+            string query = @"SELECT 
+                            tblTeacher.tec_ID,
+                            MAX(tec_Name) AS tec_Name,
+                            MAX(tec_Sex) AS tec_Sex,
+                            MAX(tec_Add) AS tec_Add,
+                            MAX(tec_Mail) AS tec_Mail,
+                            MAX(tec_Tel) AS tec_Tel,
+                            MAX(sta_Name) AS sta_Name
+                            FROM tblTeacher
+                            INNER JOIN tblStatus ON tblTeacher.sta_Num = tblStatus.sta_Num
+                            INNER JOIN tblCourse ON tblTeacher.tec_ID = tblCourse.tec_ID
+                            WHERE tblTeacher.sta_Num = 1 AND time_end >= GETDATE()
+                            GROUP BY tblTeacher.tec_ID;";
+
+            teacher = Connection.QueryObjectList<TeacherModel>(query);
+            if (teacher.Count < 0)
+            {
+                return null;
+            }
+            return teacher;
+        }
+
+        public List<TeacherModel> getTeacherSplitByReadyStatus()
+        {
+            var request = new SearchTeacherRequest()
+            {
+                tec_ID = "",
+                tec_Name = ""
+            };
+            List<TeacherModel> teacherAll = getTeacher(request);
+            List<TeacherModel> teacherReadyStatus = getTeacherReadyStatus();
+            var result = new List<TeacherModel>();
+            result.AddRange(teacherAll);
+            if (teacherReadyStatus is not null)
+            {
+                foreach(var teacher in teacherAll)
+                {
+                    foreach(var teacherReady in teacherReadyStatus)
+                    {
+                        if (teacher.tec_ID == teacherReady.tec_ID)
+                        {
+                            result.Remove(teacher);
+                        }
+                    }    
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+            return result;
+        }
     }
 }
+

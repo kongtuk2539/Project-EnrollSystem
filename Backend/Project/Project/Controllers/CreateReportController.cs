@@ -14,6 +14,7 @@ using Project.Helper;
 
 namespace Project.Controllers
 {
+    [Project.Helper.Authorize.AuthorizeAttribute("Employee", "Teacher", "Student")]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class CreateReportController : ControllerBase

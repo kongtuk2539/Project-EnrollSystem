@@ -1,51 +1,61 @@
 [
   {
     "name": "Home",
+    "nameTH": "หน้าหลัก",
     "direct": "/home",
     "role": ["Student", "Employee", "Teacher"]
   },
   {
     "name": "Subject",
+    "nameTH": "ข้อมูลวิชา",
     "direct": "/home/subject",
     "role": ["Employee"]
   },
   {
     "name": "Employee",
+    "nameTH": "ข้อมูลพนักงาน",
     "direct": "/home/employee",
     "role": ["Employee"]
   },
   {
     "name": "Student",
+    "nameTH": "ข้อมูลนักเรียน",
     "direct": "/home/student",
     "role": ["Employee"]
   },
   {
     "name": "Teacher",
+    "nameTH": "ข้อมูลผู้สอน",
     "direct": "/home/teacher",
     "role": ["Employee"]
   },
   {
     "name": "Course",
+    "nameTH": "คอร์สเรียน",
     "direct": "/home/course",
     "role": ["Student", "Employee", "Teacher"]
   },
   {
     "name": "Report",
+    "nameTH": "ออกรายงาน",
     "direct": "/home/reportes",
     "role": ["Employee"]
   },
   {
     "name": "My Course",
+    "nameTH": "คอร์สของฉัน",
     "direct": "/home/course",
     "role": ["Student"]
   },
   {
     "name": "Edit Profile",
+    "nameTH": "แก้ไขข้อมูลส่วนตัว",
     "direct": "/",
     "role": ["Student", "Teacher"]
   },
   {
     "name": "Contact Us",
+    "nameTH": "ติดต่อเรา",
     "direct": "/home/contact-us",
     "role": ["Employee", "Student", "Teacher"]
   }

@@ -1,5 +1,6 @@
 export interface Menu {
-    name: string;
-    direct: string;
-    role: [];
+  name: string;
+  nameTH: string;
+  direct: string;
+  role: [];
 }

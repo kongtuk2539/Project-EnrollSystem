@@ -11,7 +11,17 @@
   >
     {{ item.name }}
   </button>
-  <span class="example-spacer"></span>
+
+  <span class="example-spacer">
+    <button
+      routerLink="/create-student"
+      mat-button
+      class="btn-nav not-login"
+      *ngIf="!this.user"
+    >
+      <span>สมัครสมาชิก</span>
+    </button>
+  </span>
 
   <button
     routerLink="/logout"
@@ -19,7 +29,18 @@
     class="example-icon favorite-icon"
     (click)="logout()"
     aria-label="Example icon-button with heart icon"
+    *ngIf="this.user"
   >
     <mat-icon>logout</mat-icon>
+  </button>
+
+  <button
+    routerLink="/login"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    *ngIf="!this.user"
+  >
+    <mat-icon>login</mat-icon>
   </button>
 </mat-toolbar>

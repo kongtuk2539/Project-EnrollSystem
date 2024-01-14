@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Project.Controllers
 {
+    [Project.Helper.Authorize.AuthorizeAttribute("Employee", "Teacher", "Student")]
     [Route("api/[controller]/[action]")]
     [Produces("application/json")]
     [ApiController]

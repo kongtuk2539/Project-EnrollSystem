@@ -18,6 +18,13 @@ export class CourseService {
     })
   }
 
+  getCourseStatusOpen(): Observable<any> {
+    return this.http.post<any>('/api/Course/GetCourse', {
+      cou_ID: '',
+      status: 'open'
+    })
+  }
+
   getCourseByStudent(): Observable<any> {
     return this.http.post<any>('/api/Course/GetCourse', {
       cou_ID: '',
@@ -46,7 +53,7 @@ export class CourseService {
   }
 
   getTeacher(): Observable<any> {
-    return this.http.get<any>('/api/Course/getTeacherSelect')
+    return this.http.get<any>('/api/Teacher/getTeacherReadyStatus')
   }
 
   createCourse(formCourse: createCourse): Observable<any> {

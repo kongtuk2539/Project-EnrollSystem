@@ -39,7 +39,6 @@ export class CourseComponent implements OnInit {
   constructor(private _course: CourseService, private _liveAnnouncer: LiveAnnouncer, private router: Router,
     private authService: AuthService, private _router: ActivatedRoute, private reportService: GetReportService) {
     this.user = this.authService.user
-    console.log(this.user.id)
   }
 
 

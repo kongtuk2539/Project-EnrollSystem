@@ -1,2 +1,6 @@
 <app-navbar *ngIf="authService.isLoggedIn$ | async"></app-navbar>
 <router-outlet *ngIf="authService.isLoggedIn$ | async"></router-outlet>
+<app-navbar *ngIf="!IsLogin"></app-navbar>
+<app-start *ngIf="!IsLogin"></app-start>
+<app-contact-us *ngIf="!IsLogin"></app-contact-us>
+<div style="width: 100%; height: 48px"></div>

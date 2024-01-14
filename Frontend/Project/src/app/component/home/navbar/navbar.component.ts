@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(private _menuservice: MenuService, private authService: AuthService) {
     this.user = this.authService.user
-    console.log(this.user.id)
   }
 
   ngOnInit(): void {

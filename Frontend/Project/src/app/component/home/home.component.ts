@@ -8,5 +8,12 @@ import { AuthService } from '../authen/auth.service';
 })
 export class HomeComponent {
 
-  constructor(public authService:AuthService) {}
+  IsLogin: boolean = false;
+  constructor(public authService: AuthService) {
+    authService.isLoggedIn$.subscribe(data => {
+      this.IsLogin = data;
+    })
+  }
+
+
 }
